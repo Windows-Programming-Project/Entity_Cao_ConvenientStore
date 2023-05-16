@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ConvenienceStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="aUsername" />
+    </Key>
+    <Property Name="aUsername" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="aPassword" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="eID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="aEmail" Type="nvarchar" MaxLength="20" />
+    <Property Name="Active" Type="bit" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="cID" />
+    </Key>
+    <Property Name="cID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="cName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="cTotalpay" Type="float" />
+    <Property Name="cPhoneNum" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Detail">
+    <Key>
+      <PropertyRef Name="iID" />
+      <PropertyRef Name="pID" />
+    </Key>
+    <Property Name="iID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="pID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="dAmount" Type="int" />
+    <Property Name="dPrice" Type="float" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="eID" />
+    </Key>
+    <Property Name="eID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="eName" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="eBirthdate" Type="date" />
+    <Property Name="eGender" Type="bit" />
+    <Property Name="ePhone" Type="nvarchar" MaxLength="15" />
+    <Property Name="eAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="ePosition" Type="nvarchar" MaxLength="40" />
+    <Property Name="eSalary" Type="float" />
+  </EntityType>
+  <EntityType Name="Invoice">
+    <Key>
+      <PropertyRef Name="iID" />
+    </Key>
+    <Property Name="iID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="eID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="cID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="iDate" Type="datetime" />
+    <Property Name="iTotalpay" Type="float" />
+  </EntityType>
+  <EntityType Name="Manuafacture">
+    <Key>
+      <PropertyRef Name="mID" />
+    </Key>
+    <Property Name="mID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="mName" Type="nvarchar" MaxLength="20" />
+    <Property Name="mLocation" Type="nvarchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="pID" />
+    </Key>
+    <Property Name="pID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="pName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="pPrice" Type="float" Nullable="false" />
+    <Property Name="tID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="batchID" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Stock">
+    <Key>
+      <PropertyRef Name="batchID" />
+    </Key>
+    <Property Name="batchID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="imDate" Type="datetime" />
+    <Property Name="amountofProduct" Type="int" />
+    <Property Name="sID" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="sID" />
+    </Key>
+    <Property Name="sID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="mID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="sName" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="tID" />
+    </Key>
+    <Property Name="tID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="tName" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Account__eID__3C69FB99">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="eID" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="eID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Detail__iID__5BE2A6F2">
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="1" />
+    <End Role="Detail" Type="Self.Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invoice">
+        <PropertyRef Name="iID" />
+      </Principal>
+      <Dependent Role="Detail">
+        <PropertyRef Name="iID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Detail__pID__5CD6CB2B">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Detail" Type="Self.Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="pID" />
+      </Principal>
+      <Dependent Role="Detail">
+        <PropertyRef Name="pID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Invoice__cID__4D94879B">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="cID" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="cID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Invoice__eID__4CA06362">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="eID" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="eID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__tID__59063A47">
+    <End Role="Type" Type="Self.Type" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type">
+        <PropertyRef Name="tID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="tID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Stock__sID__71D1E811">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+    <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="sID" />
+      </Principal>
+      <Dependent Role="Stock">
+        <PropertyRef Name="sID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Supplier__mID__6C190EBB">
+    <End Role="Manuafacture" Type="Self.Manuafacture" Multiplicity="1" />
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manuafacture">
+        <PropertyRef Name="mID" />
+      </Principal>
+      <Dependent Role="Supplier">
+        <PropertyRef Name="mID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Pr_St">
+    <End Role="Stock" Type="Self.Stock" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stock">
+        <PropertyRef Name="batchID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="batchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ConvenienceStoreModelStoreContainer">
+    <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Detail" EntityType="Self.Detail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Manuafacture" EntityType="Self.Manuafacture" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Account__eID__3C69FB99" Association="Self.FK__Account__eID__3C69FB99">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Detail__iID__5BE2A6F2" Association="Self.FK__Detail__iID__5BE2A6F2">
+      <End Role="Invoice" EntitySet="Invoice" />
+      <End Role="Detail" EntitySet="Detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Detail__pID__5CD6CB2B" Association="Self.FK__Detail__pID__5CD6CB2B">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Detail" EntitySet="Detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Invoice__cID__4D94879B" Association="Self.FK__Invoice__cID__4D94879B">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Invoice__eID__4CA06362" Association="Self.FK__Invoice__eID__4CA06362">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="Invoice" EntitySet="Invoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__tID__59063A47" Association="Self.FK__Product__tID__59063A47">
+      <End Role="Type" EntitySet="Type" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Stock__sID__71D1E811" Association="Self.FK__Stock__sID__71D1E811">
+      <End Role="Supplier" EntitySet="Supplier" />
+      <End Role="Stock" EntitySet="Stock" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Supplier__mID__6C190EBB" Association="Self.FK__Supplier__mID__6C190EBB">
+      <End Role="Manuafacture" EntitySet="Manuafacture" />
+      <End Role="Supplier" EntitySet="Supplier" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Pr_St" Association="Self.fk_Pr_St">
+      <End Role="Stock" EntitySet="Stock" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

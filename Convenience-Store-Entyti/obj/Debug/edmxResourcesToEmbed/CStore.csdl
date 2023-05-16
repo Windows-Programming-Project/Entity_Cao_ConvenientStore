@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ConvenienceStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="aUsername" />
+    </Key>
+    <Property Name="aUsername" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="aPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="eID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="aEmail" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" />
+    <NavigationProperty Name="Employee" Relationship="ConvenienceStoreModel.FK__Account__eID__3C69FB99" FromRole="Account" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="cID" />
+    </Key>
+    <Property Name="cID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cTotalpay" Type="Double" />
+    <Property Name="cPhoneNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Invoices" Relationship="Self.FK__Invoice__cID__4D94879B" FromRole="Customer" ToRole="Invoice" />
+  </EntityType>
+  <EntityType Name="Detail">
+    <Key>
+      <PropertyRef Name="iID" />
+      <PropertyRef Name="pID" />
+    </Key>
+    <Property Name="iID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="pID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="dAmount" Type="Int32" />
+    <Property Name="dPrice" Type="Double" />
+    <NavigationProperty Name="Invoice" Relationship="Self.FK__Detail__iID__5BE2A6F2" FromRole="Detail" ToRole="Invoice" />
+    <NavigationProperty Name="Product" Relationship="ConvenienceStoreModel.FK__Detail__pID__5CD6CB2B" FromRole="Detail" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Invoice">
+    <Key>
+      <PropertyRef Name="iID" />
+    </Key>
+    <Property Name="iID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="eID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="iDate" Type="DateTime" Precision="3" />
+    <Property Name="iTotalpay" Type="Double" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Invoice__cID__4D94879B" FromRole="Invoice" ToRole="Customer" />
+    <NavigationProperty Name="Details" Relationship="Self.FK__Detail__iID__5BE2A6F2" FromRole="Invoice" ToRole="Detail" />
+    <NavigationProperty Name="Employee" Relationship="ConvenienceStoreModel.FK__Invoice__eID__4CA06362" FromRole="Invoice" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Manuafacture">
+    <Key>
+      <PropertyRef Name="mID" />
+    </Key>
+    <Property Name="mID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="mName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="mLocation" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__mID__6C190EBB" FromRole="Manuafacture" ToRole="Supplier" />
+  </EntityType>
+  <EntityType Name="Stock">
+    <Key>
+      <PropertyRef Name="batchID" />
+    </Key>
+    <Property Name="batchID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="imDate" Type="DateTime" Precision="3" />
+    <Property Name="amountofProduct" Type="Int32" />
+    <Property Name="sID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Supplier" Relationship="Self.FK__Stock__sID__71D1E811" FromRole="Stock" ToRole="Supplier" />
+    <NavigationProperty Name="Products" Relationship="ConvenienceStoreModel.fk_Pr_St" FromRole="Stock" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="sID" />
+    </Key>
+    <Property Name="sID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="mID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="sName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Manuafacture" Relationship="Self.FK__Supplier__mID__6C190EBB" FromRole="Supplier" ToRole="Manuafacture" />
+    <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__sID__71D1E811" FromRole="Supplier" ToRole="Stock" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="tID" />
+    </Key>
+    <Property Name="tID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="tName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Products" Relationship="ConvenienceStoreModel.FK__Product__tID__59063A47" FromRole="Type" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK__Invoice__cID__4D94879B">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="cID" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="cID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Detail__iID__5BE2A6F2">
+    <End Role="Invoice" Type="Self.Invoice" Multiplicity="1" />
+    <End Role="Detail" Type="Self.Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Invoice">
+        <PropertyRef Name="iID" />
+      </Principal>
+      <Dependent Role="Detail">
+        <PropertyRef Name="iID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Supplier__mID__6C190EBB">
+    <End Role="Manuafacture" Type="Self.Manuafacture" Multiplicity="1" />
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manuafacture">
+        <PropertyRef Name="mID" />
+      </Principal>
+      <Dependent Role="Supplier">
+        <PropertyRef Name="mID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Stock__sID__71D1E811">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+    <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="sID" />
+      </Principal>
+      <Dependent Role="Stock">
+        <PropertyRef Name="sID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ConvenienceStoreEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accounts" EntityType="Self.Account" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Details" EntityType="Self.Detail" />
+    <EntitySet Name="Invoices" EntityType="Self.Invoice" />
+    <EntitySet Name="Manuafactures" EntityType="Self.Manuafacture" />
+    <EntitySet Name="Stocks" EntityType="Self.Stock" />
+    <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Types" EntityType="Self.Type" />
+    <AssociationSet Name="FK__Invoice__cID__4D94879B" Association="Self.FK__Invoice__cID__4D94879B">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Invoice" EntitySet="Invoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Detail__iID__5BE2A6F2" Association="Self.FK__Detail__iID__5BE2A6F2">
+      <End Role="Invoice" EntitySet="Invoices" />
+      <End Role="Detail" EntitySet="Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Supplier__mID__6C190EBB" Association="Self.FK__Supplier__mID__6C190EBB">
+      <End Role="Manuafacture" EntitySet="Manuafactures" />
+      <End Role="Supplier" EntitySet="Suppliers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Stock__sID__71D1E811" Association="Self.FK__Stock__sID__71D1E811">
+      <End Role="Supplier" EntitySet="Suppliers" />
+      <End Role="Stock" EntitySet="Stocks" />
+    </AssociationSet>
+    <EntitySet Name="Employees" EntityType="ConvenienceStoreModel.Employee" />
+    <EntitySet Name="Products" EntityType="ConvenienceStoreModel.Product" />
+    <AssociationSet Name="FK__Account__eID__3C69FB99" Association="ConvenienceStoreModel.FK__Account__eID__3C69FB99">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Detail__pID__5CD6CB2B" Association="ConvenienceStoreModel.FK__Detail__pID__5CD6CB2B">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Detail" EntitySet="Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Invoice__eID__4CA06362" Association="ConvenienceStoreModel.FK__Invoice__eID__4CA06362">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Invoice" EntitySet="Invoices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__tID__59063A47" Association="ConvenienceStoreModel.FK__Product__tID__59063A47">
+      <End Role="Type" EntitySet="Types" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Pr_St" Association="ConvenienceStoreModel.fk_Pr_St">
+      <End Role="Stock" EntitySet="Stocks" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="eID" />
+    </Key>
+    <Property Name="eID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="eName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="eBirthdate" Type="DateTime" Precision="0" />
+    <Property Name="eGender" Type="Boolean" />
+    <Property Name="ePhone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="eAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ePosition" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="eSalary" Type="Double" />
+    <NavigationProperty Name="Accounts" Relationship="ConvenienceStoreModel.FK__Account__eID__3C69FB99" FromRole="Employee" ToRole="Account" />
+    <NavigationProperty Name="Invoices" Relationship="ConvenienceStoreModel.FK__Invoice__eID__4CA06362" FromRole="Employee" ToRole="Invoice" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="pID" />
+    </Key>
+    <Property Name="pID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="pName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="pPrice" Type="Double" Nullable="false" />
+    <Property Name="tID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="batchID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Details" Relationship="ConvenienceStoreModel.FK__Detail__pID__5CD6CB2B" FromRole="Product" ToRole="Detail" />
+    <NavigationProperty Name="Type" Relationship="ConvenienceStoreModel.FK__Product__tID__59063A47" FromRole="Product" ToRole="Type" />
+    <NavigationProperty Name="Stock" Relationship="ConvenienceStoreModel.fk_Pr_St" FromRole="Product" ToRole="Stock" />
+  </EntityType>
+  <Association Name="FK__Account__eID__3C69FB99">
+    <End Type="ConvenienceStoreModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="ConvenienceStoreModel.Account" Role="Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="eID" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="eID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Detail__pID__5CD6CB2B">
+    <End Type="ConvenienceStoreModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="ConvenienceStoreModel.Detail" Role="Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="pID" />
+      </Principal>
+      <Dependent Role="Detail">
+        <PropertyRef Name="pID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Invoice__eID__4CA06362">
+    <End Type="ConvenienceStoreModel.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="ConvenienceStoreModel.Invoice" Role="Invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="eID" />
+      </Principal>
+      <Dependent Role="Invoice">
+        <PropertyRef Name="eID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__tID__59063A47">
+    <End Type="ConvenienceStoreModel.Type" Role="Type" Multiplicity="1" />
+    <End Type="ConvenienceStoreModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type">
+        <PropertyRef Name="tID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="tID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Pr_St">
+    <End Type="ConvenienceStoreModel.Stock" Role="Stock" Multiplicity="0..1" />
+    <End Type="ConvenienceStoreModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stock">
+        <PropertyRef Name="batchID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="batchID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

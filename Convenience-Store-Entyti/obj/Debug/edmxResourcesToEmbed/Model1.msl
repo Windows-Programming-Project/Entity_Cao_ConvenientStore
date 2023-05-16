@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ConvenienceStoreManagementModelStoreContainer" CdmEntityContainer="ConvenienceStoreManagementEntitie">
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="ConvenienceStoreManagementModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="eID" ColumnName="eID" />
+          <ScalarProperty Name="eName" ColumnName="eName" />
+          <ScalarProperty Name="eBirthdate" ColumnName="eBirthdate" />
+          <ScalarProperty Name="eGender" ColumnName="eGender" />
+          <ScalarProperty Name="ePhone" ColumnName="ePhone" />
+          <ScalarProperty Name="eAddress" ColumnName="eAddress" />
+          <ScalarProperty Name="ePosition" ColumnName="ePosition" />
+          <ScalarProperty Name="eSalary" ColumnName="eSalary" />
+          <ScalarProperty Name="eUsername" ColumnName="eUsername" />
+          <ScalarProperty Name="ePassword" ColumnName="ePassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Invoices">
+      <EntityTypeMapping TypeName="ConvenienceStoreManagementModel.Invoice">
+        <MappingFragment StoreEntitySet="Invoice">
+          <ScalarProperty Name="iID" ColumnName="iID" />
+          <ScalarProperty Name="eID" ColumnName="eID" />
+          <ScalarProperty Name="cID" ColumnName="cID" />
+          <ScalarProperty Name="iDate" ColumnName="iDate" />
+          <ScalarProperty Name="iTotalpay" ColumnName="iTotalpay" />
+          <ScalarProperty Name="iFinalTotalpay" ColumnName="iFinalTotalpay" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Invoice_Detail">
+      <EntityTypeMapping TypeName="ConvenienceStoreManagementModel.Invoice_Detail">
+        <MappingFragment StoreEntitySet="Invoice_Detail">
+          <ScalarProperty Name="iID" ColumnName="iID" />
+          <ScalarProperty Name="pID" ColumnName="pID" />
+          <ScalarProperty Name="dAmount" ColumnName="dAmount" />
+          <ScalarProperty Name="dPrice" ColumnName="dPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoyalCustomers">
+      <EntityTypeMapping TypeName="ConvenienceStoreManagementModel.LoyalCustomer">
+        <MappingFragment StoreEntitySet="LoyalCustomer">
+          <ScalarProperty Name="cID" ColumnName="cID" />
+          <ScalarProperty Name="cName" ColumnName="cName" />
+          <ScalarProperty Name="cTotalpay" ColumnName="cTotalpay" />
+          <ScalarProperty Name="cPhoneNum" ColumnName="cPhoneNum" />
+          <ScalarProperty Name="rName" ColumnName="rName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Manuafacturers">
+      <EntityTypeMapping TypeName="ConvenienceStoreManagementModel.Manuafacturer">
+        <MappingFragment StoreEntitySet="Manuafacturer">
+          <ScalarProperty Name="mID" ColumnName="mID" />
+          <ScalarProperty Name="mName" ColumnName="mName" />
+          <ScalarProperty Name="mLocation" ColumnName="mLocation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="ConvenienceStoreManagementModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="pID" ColumnName="pID" />
+          <ScalarProperty Name="pName" ColumnName="pName" />
+          <ScalarProperty Name="pPrice" ColumnName="pPrice" />
+          <ScalarProperty Name="tID" ColumnName="tID" />
+          <ScalarProperty Name="batchID" ColumnName="batchID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ranks">
+      <EntityTypeMapping TypeName="ConvenienceStoreManagementModel.Rank">
+        <MappingFragment StoreEntitySet="Rank">
+          <ScalarProperty Name="rName" ColumnName="rName" />
+          <ScalarProperty Name="rDiscount" ColumnName="rDiscount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shifts">
+      <EntityTypeMapping TypeName="ConvenienceStoreManagementModel.Shift">
+        <MappingFragment StoreEntitySet="Shift">
+          <ScalarProperty Name="shID" ColumnName="shID" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stocks">
+      <EntityTypeMapping TypeName="ConvenienceStoreManagementModel.Stock">
+        <MappingFragment StoreEntitySet="Stock">
+          <ScalarProperty Name="batchID" ColumnName="batchID" />
+          <ScalarProperty Name="imDate" ColumnName="imDate" />
+          <ScalarProperty Name="amountofProduct" ColumnName="amountofProduct" />
+          <ScalarProperty Name="sID" ColumnName="sID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Suppliers">
+      <EntityTypeMapping TypeName="ConvenienceStoreManagementModel.Supplier">
+        <MappingFragment StoreEntitySet="Supplier">
+          <ScalarProperty Name="sID" ColumnName="sID" />
+          <ScalarProperty Name="sName" ColumnName="sName" />
+          <ScalarProperty Name="mID" ColumnName="mID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="ConvenienceStoreManagementModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Types">
+      <EntityTypeMapping TypeName="ConvenienceStoreManagementModel.Type">
+        <MappingFragment StoreEntitySet="Type">
+          <ScalarProperty Name="tID" ColumnName="tID" />
+          <ScalarProperty Name="tName" ColumnName="tName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeLates">
+      <EntityTypeMapping TypeName="ConvenienceStoreManagementModel.EmployeeLate">
+        <MappingFragment StoreEntitySet="EmployeeLate">
+          <ScalarProperty Name="eID" ColumnName="eID" />
+          <ScalarProperty Name="LateDate" ColumnName="LateDate" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="shID" ColumnName="shID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LeastFavoriteProducts">
+      <EntityTypeMapping TypeName="ConvenienceStoreManagementModel.LeastFavoriteProduct">
+        <MappingFragment StoreEntitySet="LeastFavoriteProducts">
+          <ScalarProperty Name="pID" ColumnName="pID" />
+          <ScalarProperty Name="pName" ColumnName="pName" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoyalCustomerLeastProducts">
+      <EntityTypeMapping TypeName="ConvenienceStoreManagementModel.LoyalCustomerLeastProduct">
+        <MappingFragment StoreEntitySet="LoyalCustomerLeastProducts">
+          <ScalarProperty Name="cID" ColumnName="cID" />
+          <ScalarProperty Name="cName" ColumnName="cName" />
+          <ScalarProperty Name="TotalProducts" ColumnName="TotalProducts" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoyalCustomerMostProducts">
+      <EntityTypeMapping TypeName="ConvenienceStoreManagementModel.LoyalCustomerMostProduct">
+        <MappingFragment StoreEntitySet="LoyalCustomerMostProducts">
+          <ScalarProperty Name="cID" ColumnName="cID" />
+          <ScalarProperty Name="cName" ColumnName="cName" />
+          <ScalarProperty Name="TotalProducts" ColumnName="TotalProducts" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MostFavoriteProducts">
+      <EntityTypeMapping TypeName="ConvenienceStoreManagementModel.MostFavoriteProduct">
+        <MappingFragment StoreEntitySet="MostFavoriteProducts">
+          <ScalarProperty Name="pID" ColumnName="pID" />
+          <ScalarProperty Name="pName" ColumnName="pName" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Employee_Shift" TypeName="ConvenienceStoreManagementModel.Employee_Shift" StoreEntitySet="Employee_Shift">
+      <EndProperty Name="Shift">
+        <ScalarProperty Name="shID" ColumnName="shID" />
+      </EndProperty>
+      <EndProperty Name="Employee">
+        <ScalarProperty Name="eID" ColumnName="eID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionName="ConvenienceStoreManagementModel.Store.check_account_login" FunctionImportName="check_account_login">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ConvenienceStoreManagementModel.check_account_login_Result">
+          <ScalarProperty Name="eID" ColumnName="eID" />
+          <ScalarProperty Name="eName" ColumnName="eName" />
+          <ScalarProperty Name="eBirthdate" ColumnName="eBirthdate" />
+          <ScalarProperty Name="eGender" ColumnName="eGender" />
+          <ScalarProperty Name="ePhone" ColumnName="ePhone" />
+          <ScalarProperty Name="eAddress" ColumnName="eAddress" />
+          <ScalarProperty Name="ePosition" ColumnName="ePosition" />
+          <ScalarProperty Name="eSalary" ColumnName="eSalary" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="ConvenienceStoreManagementModel.Store.FN_AvailableProducts" FunctionImportName="FN_AvailableProducts">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ConvenienceStoreManagementModel.FN_AvailableProducts_Result">
+          <ScalarProperty Name="pID" ColumnName="pID" />
+          <ScalarProperty Name="pName" ColumnName="pName" />
+          <ScalarProperty Name="amountImport" ColumnName="amountImport" />
+          <ScalarProperty Name="amountInStock" ColumnName="amountInStock" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="ConvenienceStoreManagementModel.Store.FN_TotalSalary" FunctionImportName="FN_TotalSalary">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ConvenienceStoreManagementModel.FN_TotalSalary_Result">
+          <ScalarProperty Name="eID" ColumnName="eID" />
+          <ScalarProperty Name="eName" ColumnName="eName" />
+          <ScalarProperty Name="eGender" ColumnName="eGender" />
+          <ScalarProperty Name="ePhoneNum" ColumnName="ePhoneNum" />
+          <ScalarProperty Name="salaryPerHour" ColumnName="salaryPerHour" />
+          <ScalarProperty Name="workingHour" ColumnName="workingHour" />
+          <ScalarProperty Name="totalSalary" ColumnName="totalSalary" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="FindProductByTypeName" FunctionName="ConvenienceStoreManagementModel.Store.FindProductByTypeName">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ConvenienceStoreManagementModel.FindProductByTypeName_Result">
+          <ScalarProperty Name="pID" ColumnName="pID" />
+          <ScalarProperty Name="pName" ColumnName="pName" />
+          <ScalarProperty Name="pPrice" ColumnName="pPrice" />
+          <ScalarProperty Name="tID" ColumnName="tID" />
+          <ScalarProperty Name="batchID" ColumnName="batchID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="ConvenienceStoreManagementModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="ConvenienceStoreManagementModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="ConvenienceStoreManagementModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="ConvenienceStoreManagementModel.Store.sp_helpdiagramdefinition" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="ConvenienceStoreManagementModel.Store.sp_helpdiagrams" />
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ConvenienceStoreManagementModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ConvenienceStoreManagementModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="spud_HighestIncome" FunctionName="ConvenienceStoreManagementModel.Store.spud_HighestIncome">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ConvenienceStoreManagementModel.spud_HighestIncome_Result">
+          <ScalarProperty Name="eID" ColumnName="eID" />
+          <ScalarProperty Name="eName" ColumnName="eName" />
+          <ScalarProperty Name="eGender" ColumnName="eGender" />
+          <ScalarProperty Name="eBirthdate" ColumnName="eBirthdate" />
+          <ScalarProperty Name="eAddress" ColumnName="eAddress" />
+          <ScalarProperty Name="ePhone" ColumnName="ePhone" />
+          <ScalarProperty Name="ePosition" ColumnName="ePosition" />
+          <ScalarProperty Name="BasicSalaryPerHour" ColumnName="BasicSalaryPerHour" />
+          <ScalarProperty Name="TotalworkHours" ColumnName="TotalworkHours" />
+          <ScalarProperty Name="Income" ColumnName="Income" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spud_MostDiligentEmployee" FunctionName="ConvenienceStoreManagementModel.Store.spud_MostDiligentEmployee">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ConvenienceStoreManagementModel.spud_MostDiligentEmployee_Result">
+          <ScalarProperty Name="eID" ColumnName="eID" />
+          <ScalarProperty Name="eName" ColumnName="eName" />
+          <ScalarProperty Name="eGender" ColumnName="eGender" />
+          <ScalarProperty Name="eBirthdate" ColumnName="eBirthdate" />
+          <ScalarProperty Name="eAddress" ColumnName="eAddress" />
+          <ScalarProperty Name="ePhone" ColumnName="ePhone" />
+          <ScalarProperty Name="ePosition" ColumnName="ePosition" />
+          <ScalarProperty Name="BasicSalaryPerHour" ColumnName="BasicSalaryPerHour" />
+          <ScalarProperty Name="TotalworkHours" ColumnName="TotalworkHours" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

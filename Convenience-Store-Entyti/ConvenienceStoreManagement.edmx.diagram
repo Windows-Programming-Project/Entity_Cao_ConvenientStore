@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="85bf03596b5a4fd2979dd02afc1546bb" Name="Diagram1">
+        <EntityTypeShape EntityType="ConvenienceStoreManagementModel.Employee" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConvenienceStoreManagementModel.Invoice" Width="1.5" PointX="7.5" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConvenienceStoreManagementModel.Invoice_Detail" Width="1.5" PointX="9.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConvenienceStoreManagementModel.LoyalCustomer" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConvenienceStoreManagementModel.Manuafacturer" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConvenienceStoreManagementModel.Product" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConvenienceStoreManagementModel.Rank" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConvenienceStoreManagementModel.Shift" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConvenienceStoreManagementModel.Stock" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConvenienceStoreManagementModel.Supplier" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConvenienceStoreManagementModel.sysdiagram" PointX="0.75" PointY="4.75" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConvenienceStoreManagementModel.Type" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ConvenienceStoreManagementModel.EmployeeLate" Width="1.5" PointX="7.5" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="ConvenienceStoreManagementModel.FK__EmployeeLat__eID__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="ConvenienceStoreManagementModel.FK__Invoice__eID__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="ConvenienceStoreManagementModel.FK__Invoice__cID__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="ConvenienceStoreManagementModel.FK__Invoice_Det__iID__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="ConvenienceStoreManagementModel.FK__Invoice_Det__pID__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="ConvenienceStoreManagementModel.FK__LoyalCust__rName__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="ConvenienceStoreManagementModel.FK__Supplier__mID__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="ConvenienceStoreManagementModel.FK__Product__batchID__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="ConvenienceStoreManagementModel.FK__Product__tID__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="ConvenienceStoreManagementModel.FK__Stock__sID__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="ConvenienceStoreManagementModel.Employee_Shift" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
