@@ -100,6 +100,7 @@
             this.txtGenderEMP.Name = "txtGenderEMP";
             this.txtGenderEMP.Size = new System.Drawing.Size(267, 45);
             this.txtGenderEMP.TabIndex = 23;
+            this.txtGenderEMP.TextChanged += new System.EventHandler(this.txtGenderEMP_TextChanged);
             // 
             // txtDateOfBirthEMP
             // 
@@ -108,6 +109,7 @@
             this.txtDateOfBirthEMP.Name = "txtDateOfBirthEMP";
             this.txtDateOfBirthEMP.Size = new System.Drawing.Size(267, 45);
             this.txtDateOfBirthEMP.TabIndex = 22;
+            this.txtDateOfBirthEMP.TextChanged += new System.EventHandler(this.txtDateOfBirthEMP_TextChanged);
             // 
             // txtNameEMP
             // 
@@ -116,6 +118,7 @@
             this.txtNameEMP.Name = "txtNameEMP";
             this.txtNameEMP.Size = new System.Drawing.Size(267, 45);
             this.txtNameEMP.TabIndex = 21;
+            this.txtNameEMP.TextChanged += new System.EventHandler(this.txtNameEMP_TextChanged);
             // 
             // txtIDEmp
             // 
@@ -124,6 +127,7 @@
             this.txtIDEmp.Name = "txtIDEmp";
             this.txtIDEmp.Size = new System.Drawing.Size(267, 45);
             this.txtIDEmp.TabIndex = 20;
+            this.txtIDEmp.TextChanged += new System.EventHandler(this.txtIDEmp_TextChanged);
             // 
             // dgvEMPLOYEE
             // 
@@ -141,7 +145,7 @@
             // 
             // btnDeleteEMP
             // 
-            this.btnDeleteEMP.Location = new System.Drawing.Point(804, 148);
+            this.btnDeleteEMP.Location = new System.Drawing.Point(729, 148);
             this.btnDeleteEMP.Name = "btnDeleteEMP";
             this.btnDeleteEMP.Size = new System.Drawing.Size(128, 45);
             this.btnDeleteEMP.TabIndex = 40;
@@ -151,7 +155,7 @@
             // 
             // btnExitEMP
             // 
-            this.btnExitEMP.Location = new System.Drawing.Point(968, 85);
+            this.btnExitEMP.Location = new System.Drawing.Point(901, 85);
             this.btnExitEMP.Name = "btnExitEMP";
             this.btnExitEMP.Size = new System.Drawing.Size(128, 45);
             this.btnExitEMP.TabIndex = 39;
@@ -161,7 +165,7 @@
             // 
             // btnChangedEMP
             // 
-            this.btnChangedEMP.Location = new System.Drawing.Point(804, 85);
+            this.btnChangedEMP.Location = new System.Drawing.Point(729, 85);
             this.btnChangedEMP.Name = "btnChangedEMP";
             this.btnChangedEMP.Size = new System.Drawing.Size(128, 45);
             this.btnChangedEMP.TabIndex = 38;
@@ -171,7 +175,7 @@
             // 
             // btnReloadEMP
             // 
-            this.btnReloadEMP.Location = new System.Drawing.Point(968, 21);
+            this.btnReloadEMP.Location = new System.Drawing.Point(901, 21);
             this.btnReloadEMP.Name = "btnReloadEMP";
             this.btnReloadEMP.Size = new System.Drawing.Size(128, 45);
             this.btnReloadEMP.TabIndex = 37;
@@ -181,7 +185,7 @@
             // 
             // btnAddEMP
             // 
-            this.btnAddEMP.Location = new System.Drawing.Point(804, 21);
+            this.btnAddEMP.Location = new System.Drawing.Point(729, 21);
             this.btnAddEMP.Name = "btnAddEMP";
             this.btnAddEMP.Size = new System.Drawing.Size(128, 45);
             this.btnAddEMP.TabIndex = 36;
@@ -232,6 +236,7 @@
             this.txtSalaryEMP.Name = "txtSalaryEMP";
             this.txtSalaryEMP.Size = new System.Drawing.Size(267, 45);
             this.txtSalaryEMP.TabIndex = 30;
+            this.txtSalaryEMP.TextChanged += new System.EventHandler(this.txtSalaryEMP_TextChanged);
             // 
             // txtPositionEMP
             // 
@@ -240,6 +245,7 @@
             this.txtPositionEMP.Name = "txtPositionEMP";
             this.txtPositionEMP.Size = new System.Drawing.Size(267, 45);
             this.txtPositionEMP.TabIndex = 29;
+            this.txtPositionEMP.TextChanged += new System.EventHandler(this.txtPositionEMP_TextChanged);
             // 
             // txtAddressEMP
             // 
@@ -248,6 +254,7 @@
             this.txtAddressEMP.Name = "txtAddressEMP";
             this.txtAddressEMP.Size = new System.Drawing.Size(267, 45);
             this.txtAddressEMP.TabIndex = 28;
+            this.txtAddressEMP.TextChanged += new System.EventHandler(this.txtAddressEMP_TextChanged);
             // 
             // txtPhoneEMP
             // 
@@ -256,6 +263,7 @@
             this.txtPhoneEMP.Name = "txtPhoneEMP";
             this.txtPhoneEMP.Size = new System.Drawing.Size(267, 45);
             this.txtPhoneEMP.TabIndex = 31;
+            this.txtPhoneEMP.TextChanged += new System.EventHandler(this.txtPhoneEMP_TextChanged);
             // 
             // txtUserNameEmp
             // 
@@ -264,6 +272,7 @@
             this.txtUserNameEmp.Name = "txtUserNameEmp";
             this.txtUserNameEmp.Size = new System.Drawing.Size(267, 45);
             this.txtUserNameEmp.TabIndex = 23;
+            this.txtUserNameEmp.TextChanged += new System.EventHandler(this.txtUserNameEmp_TextChanged);
             // 
             // lbUserNameAccount
             // 
@@ -281,6 +290,7 @@
             this.txtPasswordAccountEmp.Name = "txtPasswordAccountEmp";
             this.txtPasswordAccountEmp.Size = new System.Drawing.Size(267, 45);
             this.txtPasswordAccountEmp.TabIndex = 30;
+            this.txtPasswordAccountEmp.TextChanged += new System.EventHandler(this.txtPasswordAccountEmp_TextChanged);
             // 
             // lbPassword
             // 

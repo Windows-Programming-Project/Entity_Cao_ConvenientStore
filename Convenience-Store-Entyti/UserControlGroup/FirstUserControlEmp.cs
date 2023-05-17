@@ -207,8 +207,59 @@ namespace Convenience_Store_Entyti.DanhMuc
 
         }
 
+
         #endregion
 
-       
+        #region lable text 
+        private void txtIDEmp_TextChanged(object sender, EventArgs e)
+        {
+            lbEmpID.Visible = false;
+        }
+
+        private void txtNameEMP_TextChanged(object sender, EventArgs e)
+        {
+            lbNameEMP.Visible = false;
+        }
+
+        private void txtPhoneEMP_TextChanged(object sender, EventArgs e)
+        {
+            lbPhoneEMP.Visible = false;
+        }
+
+        private void txtGenderEMP_TextChanged(object sender, EventArgs e)
+        {
+            lbGenderEMP.Visible = false;
+        }
+
+        private void txtUserNameEmp_TextChanged(object sender, EventArgs e)
+        {
+            lbUserNameAccount.Visible = false;
+        }
+
+        private void txtPasswordAccountEmp_TextChanged(object sender, EventArgs e)
+        {
+            lbPassword.Visible = false;
+        }
+
+        private void txtSalaryEMP_TextChanged(object sender, EventArgs e)
+        {
+            lbSalaryEMP.Visible = false;
+        }
+
+        private void txtPositionEMP_TextChanged(object sender, EventArgs e)
+        {
+            lbPositionEMP.Visible = false;
+        }
+
+        private void txtAddressEMP_TextChanged(object sender, EventArgs e)
+        {
+            lbAddressEMP.Visible = false;
+        }
+
+        private void txtDateOfBirthEMP_TextChanged(object sender, EventArgs e)
+        {
+            lbDateofBirthEMP.Visible = false;
+        }
+        #endregion
     }
 }
