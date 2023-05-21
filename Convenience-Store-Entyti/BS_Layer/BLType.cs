@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Convenience_Store_Entyti.UserControlGroup;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -11,7 +12,9 @@ namespace Convenience_Store_Entyti.BS_Layer
     {
         public DataTable TakeType()
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+            
+            var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
+
             var tys = from p in qlstoreEntity.Types select p;
             DataTable dt = new DataTable();
             dt.Columns.Add("tID");
@@ -24,7 +27,9 @@ namespace Convenience_Store_Entyti.BS_Layer
         }
         public bool AddType(string tID, string tName,ref string err)
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+            
+            var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
+
             Type ty = new Type();
             ty.tID = tID; ty.tName = tName;
             qlstoreEntity.Types.Add(ty);
@@ -33,24 +38,26 @@ namespace Convenience_Store_Entyti.BS_Layer
         }
         public bool DeleteType(ref string err, string tID)
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
-            Type ty = new Type();
+            
+            var dbContext = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
+                Type ty = new Type();
             ty.tID = tID;
-            qlstoreEntity.Types.Attach(ty);
-            qlstoreEntity.Types.Remove(ty);
-            qlstoreEntity.SaveChanges();
+            dbContext.Types.Attach(ty);
+            dbContext.Types.Remove(ty);
+            dbContext.SaveChanges();
             return true;
         }
         public bool UpdateType(string tID, string tName, ref string err)
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
-            var tyQuery = (from ty in qlstoreEntity.Types
+            
+            var dbContext = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
+                var tyQuery = (from ty in dbContext.Types
                            where ty.tID == tID
                            select ty).SingleOrDefault();
             if (tyQuery != null)
             {
                 tyQuery.tName = tName;
-                qlstoreEntity.SaveChanges();
+                dbContext.SaveChanges();
             }
             return true;
         }

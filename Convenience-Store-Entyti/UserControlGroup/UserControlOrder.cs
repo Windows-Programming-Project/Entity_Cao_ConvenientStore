@@ -232,5 +232,13 @@ namespace Convenience_Store_Entyti.DanhMuc
         {
             lbAmountP_order.Visible = false;
         }
+
+        private void btDeleteProductonOrder_Click(object sender, EventArgs e)
+        {
+            //  BLInvoice_Detail dbinvoice_detail = new BLInvoice_Detail();
+
+            dbInvoice_Detail.DeleteInvoice_Detail(ref err, invoiceID, txtProduct_order.Text);
+            LoadDataDetail_order();
+        }
     }
 }

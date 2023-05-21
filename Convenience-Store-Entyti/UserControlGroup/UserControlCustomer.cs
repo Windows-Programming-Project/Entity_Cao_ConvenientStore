@@ -197,9 +197,13 @@ namespace Convenience_Store_Entyti.DanhMuc
 
 
 
+
+
         #endregion
 
-
-
+        private void btFindCTM_Click(object sender, EventArgs e)
+        {
+            dgvCustomer.DataSource = dbCustomer.FindCustomersByName(txtFindCTM.Text);
+        }
     }
 }

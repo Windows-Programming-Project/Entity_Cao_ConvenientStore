@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Convenience_Store_Entyti.RJControl;
 namespace Convenience_Store_Entyti.DanhMuc
 {
     public partial class FirstUserControlEmp : System.Windows.Forms.UserControl
@@ -68,13 +68,13 @@ namespace Convenience_Store_Entyti.DanhMuc
             LoadDataEMP();
            
         }
-        #region button employee
 
-        private void btnReloadEMP_Click(object sender, EventArgs e)
+        #region button employee
+        private void btnReloadEMP_Click_1(object sender, EventArgs e)
         {
             LoadDataEMP();
         }
-
+       
         private void btnExitEMP_Click(object sender, EventArgs e)
         {
 
@@ -260,6 +260,16 @@ namespace Convenience_Store_Entyti.DanhMuc
         {
             lbDateofBirthEMP.Visible = false;
         }
+
         #endregion
+
+        private void btFindEMP_Click(object sender, EventArgs e)
+        {
+            dgvEMPLOYEE.DataSource = dbEmployee.FindEmployeesByName(txtFindEMP.Text);
+            // chang size table
+            dgvEMPLOYEE.AutoResizeColumns();
+            
+          
+        }
     }
 }

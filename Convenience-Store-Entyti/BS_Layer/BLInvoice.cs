@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Convenience_Store_Entyti.UserControlGroup;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -6,19 +7,24 @@ using System.Text;
 using System.Threading.Tasks;
 
 
+
 namespace Convenience_Store_Entyti.BS_Layer
 {
+   
     class BLInvoice
     {
+       
         public int CountInvoiceIDs()
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+            
+            var qlstoreEntity = new ConvenienceStoreManagementEntities1(UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
             int count = qlstoreEntity.Invoices.Count();
             return count;
         }
         public DataTable TakeInvoice()
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+            
+            var qlstoreEntity = new ConvenienceStoreManagementEntities1(UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
             var inv = from p in qlstoreEntity.Invoices select p;
             DataTable dt = new DataTable();
             dt.Columns.Add("iID");
@@ -37,7 +43,9 @@ namespace Convenience_Store_Entyti.BS_Layer
         {
             try
             {
-                ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+
+                
+                var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
                 Invoice inv = new Invoice();
                 inv.iID = iID;
                 inv.eID = eID;
@@ -57,7 +65,8 @@ namespace Convenience_Store_Entyti.BS_Layer
         }
         public bool DeleteInvoice(ref string err, string iID, string eID, string cID)
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+            
+            var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
             Invoice inv = new Invoice();
             inv.iID = iID;
             inv.eID = eID;
@@ -71,7 +80,8 @@ namespace Convenience_Store_Entyti.BS_Layer
         {
             try
             {
-                ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+                
+                var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
                 var maQuery = (from inv in qlstoreEntity.Invoices
                                where inv.iID == iID
                                select inv).SingleOrDefault();

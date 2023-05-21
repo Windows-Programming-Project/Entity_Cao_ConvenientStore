@@ -40,7 +40,6 @@
             this.btnDeleteEMP = new System.Windows.Forms.Button();
             this.btnExitEMP = new System.Windows.Forms.Button();
             this.btnChangedEMP = new System.Windows.Forms.Button();
-            this.btnReloadEMP = new System.Windows.Forms.Button();
             this.btnAddEMP = new System.Windows.Forms.Button();
             this.lbSalaryEMP = new System.Windows.Forms.Label();
             this.lbPositionEMP = new System.Windows.Forms.Label();
@@ -54,6 +53,10 @@
             this.lbUserNameAccount = new System.Windows.Forms.Label();
             this.txtPasswordAccountEmp = new System.Windows.Forms.TextBox();
             this.lbPassword = new System.Windows.Forms.Label();
+            this.btnReloadEMP = new Convenience_Store_Entyti.RJControl.DesignButtonControl();
+            this.txtFindEMP = new System.Windows.Forms.TextBox();
+            this.btFindEMP = new Convenience_Store_Entyti.RJControl.DesignButtonControl();
+            this.designButtonControl2 = new Convenience_Store_Entyti.RJControl.DesignButtonControl();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEMPLOYEE)).BeginInit();
             this.SuspendLayout();
             // 
@@ -173,16 +176,6 @@
             this.btnChangedEMP.UseVisualStyleBackColor = true;
             this.btnChangedEMP.Click += new System.EventHandler(this.btnChangedEMP_Click);
             // 
-            // btnReloadEMP
-            // 
-            this.btnReloadEMP.Location = new System.Drawing.Point(901, 21);
-            this.btnReloadEMP.Name = "btnReloadEMP";
-            this.btnReloadEMP.Size = new System.Drawing.Size(128, 45);
-            this.btnReloadEMP.TabIndex = 37;
-            this.btnReloadEMP.Text = "Reload";
-            this.btnReloadEMP.UseVisualStyleBackColor = true;
-            this.btnReloadEMP.Click += new System.EventHandler(this.btnReloadEMP_Click);
-            // 
             // btnAddEMP
             // 
             this.btnAddEMP.Location = new System.Drawing.Point(729, 21);
@@ -301,15 +294,86 @@
             this.lbPassword.TabIndex = 35;
             this.lbPassword.Text = "Password";
             // 
+            // btnReloadEMP
+            // 
+            this.btnReloadEMP.BackColor = System.Drawing.Color.Crimson;
+            this.btnReloadEMP.BackgroundColor = System.Drawing.Color.Crimson;
+            this.btnReloadEMP.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnReloadEMP.BorderRadius = 20;
+            this.btnReloadEMP.BorderSize = 0;
+            this.btnReloadEMP.FlatAppearance.BorderSize = 0;
+            this.btnReloadEMP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReloadEMP.ForeColor = System.Drawing.Color.White;
+            this.btnReloadEMP.Image = global::Convenience_Store_Entyti.Properties.Resources.Reload;
+            this.btnReloadEMP.Location = new System.Drawing.Point(729, 207);
+            this.btnReloadEMP.Name = "btnReloadEMP";
+            this.btnReloadEMP.Size = new System.Drawing.Size(150, 40);
+            this.btnReloadEMP.TabIndex = 42;
+            this.btnReloadEMP.Text = "Reload";
+            this.btnReloadEMP.TextColor = System.Drawing.Color.White;
+            this.btnReloadEMP.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnReloadEMP.UseVisualStyleBackColor = false;
+            this.btnReloadEMP.Click += new System.EventHandler(this.btnReloadEMP_Click_1);
+            // 
+            // txtFindEMP
+            // 
+            this.txtFindEMP.Location = new System.Drawing.Point(1321, 43);
+            this.txtFindEMP.Multiline = true;
+            this.txtFindEMP.Name = "txtFindEMP";
+            this.txtFindEMP.Size = new System.Drawing.Size(263, 48);
+            this.txtFindEMP.TabIndex = 43;
+            // 
+            // btFindEMP
+            // 
+            this.btFindEMP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(218)))), ((int)(((byte)(93)))));
+            this.btFindEMP.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(218)))), ((int)(((byte)(93)))));
+            this.btFindEMP.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btFindEMP.BorderRadius = 20;
+            this.btFindEMP.BorderSize = 0;
+            this.btFindEMP.FlatAppearance.BorderSize = 0;
+            this.btFindEMP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btFindEMP.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.btFindEMP.Location = new System.Drawing.Point(1145, 50);
+            this.btFindEMP.Name = "btFindEMP";
+            this.btFindEMP.Size = new System.Drawing.Size(150, 40);
+            this.btFindEMP.TabIndex = 44;
+            this.btFindEMP.Text = "Find Employee";
+            this.btFindEMP.TextColor = System.Drawing.Color.RoyalBlue;
+            this.btFindEMP.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btFindEMP.UseVisualStyleBackColor = false;
+            this.btFindEMP.Click += new System.EventHandler(this.btFindEMP_Click);
+            // 
+            // designButtonControl2
+            // 
+            this.designButtonControl2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(218)))), ((int)(((byte)(93)))));
+            this.designButtonControl2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(218)))), ((int)(((byte)(93)))));
+            this.designButtonControl2.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.designButtonControl2.BorderRadius = 8;
+            this.designButtonControl2.BorderSize = 0;
+            this.designButtonControl2.FlatAppearance.BorderSize = 0;
+            this.designButtonControl2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.designButtonControl2.ForeColor = System.Drawing.Color.White;
+            this.designButtonControl2.Location = new System.Drawing.Point(1101, 177);
+            this.designButtonControl2.Name = "designButtonControl2";
+            this.designButtonControl2.Size = new System.Drawing.Size(8, 8);
+            this.designButtonControl2.TabIndex = 45;
+            this.designButtonControl2.Text = "designButtonControl2";
+            this.designButtonControl2.TextColor = System.Drawing.Color.White;
+            this.designButtonControl2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.designButtonControl2.UseVisualStyleBackColor = false;
+            // 
             // FirstUserControlEmp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.designButtonControl2);
+            this.Controls.Add(this.btFindEMP);
+            this.Controls.Add(this.txtFindEMP);
+            this.Controls.Add(this.btnReloadEMP);
             this.Controls.Add(this.dgvEMPLOYEE);
             this.Controls.Add(this.btnDeleteEMP);
             this.Controls.Add(this.btnExitEMP);
             this.Controls.Add(this.btnChangedEMP);
-            this.Controls.Add(this.btnReloadEMP);
             this.Controls.Add(this.btnAddEMP);
             this.Controls.Add(this.lbPassword);
             this.Controls.Add(this.lbSalaryEMP);
@@ -353,7 +417,6 @@
         private System.Windows.Forms.Button btnDeleteEMP;
         private System.Windows.Forms.Button btnExitEMP;
         private System.Windows.Forms.Button btnChangedEMP;
-        private System.Windows.Forms.Button btnReloadEMP;
         private System.Windows.Forms.Button btnAddEMP;
         private System.Windows.Forms.Label lbSalaryEMP;
         private System.Windows.Forms.Label lbPositionEMP;
@@ -367,5 +430,9 @@
         private System.Windows.Forms.Label lbUserNameAccount;
         private System.Windows.Forms.TextBox txtPasswordAccountEmp;
         private System.Windows.Forms.Label lbPassword;
+        private RJControl.DesignButtonControl btnReloadEMP;
+        private System.Windows.Forms.TextBox txtFindEMP;
+        private RJControl.DesignButtonControl btFindEMP;
+        private RJControl.DesignButtonControl designButtonControl2;
     }
 }

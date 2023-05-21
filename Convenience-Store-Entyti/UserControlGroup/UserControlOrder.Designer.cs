@@ -45,6 +45,7 @@
             this.btnReloadMenu_order = new System.Windows.Forms.Button();
             this.btnFind_order = new System.Windows.Forms.Button();
             this.btnAddInvoice_order = new System.Windows.Forms.Button();
+            this.btDeleteProductonOrder = new Convenience_Store_Entyti.RJControl.DesignButtonControl();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetail_order)).BeginInit();
             this.SuspendLayout();
@@ -226,11 +227,32 @@
             this.btnAddInvoice_order.UseVisualStyleBackColor = true;
             this.btnAddInvoice_order.Click += new System.EventHandler(this.btnAddInvoice_order_Click);
             // 
+            // btDeleteProductonOrder
+            // 
+            this.btDeleteProductonOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(218)))), ((int)(((byte)(93)))));
+            this.btDeleteProductonOrder.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(218)))), ((int)(((byte)(93)))));
+            this.btDeleteProductonOrder.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btDeleteProductonOrder.BorderRadius = 20;
+            this.btDeleteProductonOrder.BorderSize = 0;
+            this.btDeleteProductonOrder.FlatAppearance.BorderSize = 0;
+            this.btDeleteProductonOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btDeleteProductonOrder.ForeColor = System.Drawing.Color.White;
+            this.btDeleteProductonOrder.Location = new System.Drawing.Point(843, 618);
+            this.btDeleteProductonOrder.Name = "btDeleteProductonOrder";
+            this.btDeleteProductonOrder.Size = new System.Drawing.Size(150, 40);
+            this.btDeleteProductonOrder.TabIndex = 5;
+            this.btDeleteProductonOrder.Text = "Delete Product";
+            this.btDeleteProductonOrder.TextColor = System.Drawing.Color.White;
+            this.btDeleteProductonOrder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btDeleteProductonOrder.UseVisualStyleBackColor = false;
+            this.btDeleteProductonOrder.Click += new System.EventHandler(this.btDeleteProductonOrder_Click);
+            // 
             // UserControlOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(244)))));
+            this.Controls.Add(this.btDeleteProductonOrder);
             this.Controls.Add(this.lbAmountP_order);
             this.Controls.Add(this.lbCustomerPhone_order);
             this.Controls.Add(this.lbProduct_order);
@@ -277,5 +299,6 @@
         private System.Windows.Forms.Label lbAmountP_order;
         private System.Windows.Forms.Button btnAddProduct_order;
         private System.Windows.Forms.Button btnReloadMenu_order;
+        private RJControl.DesignButtonControl btDeleteProductonOrder;
     }
 }

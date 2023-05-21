@@ -5,19 +5,70 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using Convenience_Store_Entyti.UserControlGroup;
 
 namespace Convenience_Store_Entyti.BS_Layer
 {
     class BLEmployee
     {
-        
 
+        public DataTable FindEmployeesByName(string name)
+        {
+            try
+            {
+               
+                using (var dbContext = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password))
+                {
+                    var query = dbContext.Database.SqlQuery<Employee>(
+                        "SELECT * FROM dbo.FindEmployeesByName(@name)",
+                        new SqlParameter("@name", name)
+                    );
+
+                    DataTable dataTable = new DataTable();
+                    dataTable.Columns.Add("EID", typeof(string));
+                    dataTable.Columns.Add("EName", typeof(string));
+                    dataTable.Columns.Add("EDateOfBirth", typeof(DateTime));
+                    dataTable.Columns.Add("EGender", typeof(bool));
+                    dataTable.Columns.Add("EPhone", typeof(string));
+                    dataTable.Columns.Add("EAddress", typeof(string));
+                    dataTable.Columns.Add("EPosition", typeof(string));
+                    dataTable.Columns.Add("ESalary", typeof(float));
+                    dataTable.Columns.Add("EUserName", typeof(string));
+                    dataTable.Columns.Add("EPass", typeof(string));
+
+                    foreach (var row in query)
+                    {
+                        dataTable.Rows.Add(
+                            row.eID.ToString(),
+                            row.eName,
+                            row.eBirthdate,
+                            row.eGender,
+                            row.ePhone,
+                            row.eAddress,
+                            row.ePosition,
+                            (float)row.eSalary,
+                            row.eUsername,
+                            row.ePassword
+                        );
+                    }
+
+                    return dataTable;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error retrieving employees: " + ex.Message);
+                return null;
+            }
+        }
         public DataTable GetHighestIncomeEmployees(DateTime month)
         {   
 
             try
             {
-                using (var dbContext = new ConvenienceStoreManagementEntities1())
+               
+                using (var dbContext = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password))
                 {
                     var parameter = new SqlParameter("@month", month.Date);
 
@@ -46,7 +97,8 @@ namespace Convenience_Store_Entyti.BS_Layer
         {
             try
             {
-                using (var dbContext = new ConvenienceStoreManagementEntities1())
+               
+                using (var dbContext = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password))
                 {
                     var parameter = new SqlParameter("@month", month);
 
@@ -73,9 +125,10 @@ namespace Convenience_Store_Entyti.BS_Layer
 
         public DataTable GetEmployeePayroll(DateTime month)
         {
-            using (var context = new ConvenienceStoreManagementEntities1())
+           
+            using (var dbContext = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password))
             {
-                var query = from ep in context.FN_TotalSalary(month)
+                var query = from ep in dbContext.FN_TotalSalary(month)
                             select new
                             {
                                 ep.eID,
@@ -109,7 +162,8 @@ namespace Convenience_Store_Entyti.BS_Layer
         {
             try
             {
-                using (var dbContext = new ConvenienceStoreManagementEntities1())
+               
+                using (var dbContext = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password))
                 {
                     var employee = dbContext.Employees.FirstOrDefault(e =>
                         e.eUsername == username && e.ePassword == password && e.ePosition == role);
@@ -126,8 +180,9 @@ namespace Convenience_Store_Entyti.BS_Layer
 
         public DataTable TakeEmployee()
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
-            var det = from p in qlstoreEntity.Employees select p;
+           
+            var dbContext = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
+                var det = from p in dbContext.Employees select p;
             DataTable dt = new DataTable();
             dt.Columns.Add("eID");
             dt.Columns.Add("eName");
@@ -150,10 +205,11 @@ namespace Convenience_Store_Entyti.BS_Layer
             try
             {
                 // create a new instance of the DbContext object
-                ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
-
-                // create a new instance of the Employee object
-                Employee emp = new Employee();
+               // ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+               
+                var dbContext = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
+                    // create a new instance of the Employee object
+                    Employee emp = new Employee();
 
                 // set the properties of the Employee object
                 emp.eID = EID;
@@ -168,10 +224,10 @@ namespace Convenience_Store_Entyti.BS_Layer
                 emp.ePassword = EPass;
 
                 // add the Employee object to the DbContext
-                qlstoreEntity.Employees.Add(emp);
+                dbContext.Employees.Add(emp);
 
                 // save changes to the database
-                qlstoreEntity.SaveChanges();
+                dbContext.SaveChanges();
 
                 // return true to indicate success
                 return true;
@@ -190,10 +246,11 @@ namespace Convenience_Store_Entyti.BS_Layer
             try
             {
                 // create a new instance of the DbContext object
-                ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+               
+                var dbContext = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
 
-                // retrieve the existing employee from the database using the specified EID
-                Employee emp = qlstoreEntity.Employees.FirstOrDefault(e => e.eID == EID);
+                    // retrieve the existing employee from the database using the specified EID
+                    Employee emp = dbContext.Employees.FirstOrDefault(e => e.eID == EID);
 
                 if (emp != null)
                 {
@@ -209,7 +266,7 @@ namespace Convenience_Store_Entyti.BS_Layer
                     emp.ePassword = EPass;
 
                     // save changes to the database
-                    qlstoreEntity.SaveChanges();
+                    dbContext.SaveChanges();
 
                     // return true to indicate success
                     return true;
@@ -237,16 +294,17 @@ namespace Convenience_Store_Entyti.BS_Layer
             try
             {
                 // create a new instance of the DbContext object
-                ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+               
+                var dbContext = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
 
-                // retrieve the existing employee from the database using the specified EID
-                Employee emp = qlstoreEntity.Employees.FirstOrDefault(e => e.eID == eID);
+                    // retrieve the existing employee from the database using the specified EID
+                    Employee emp = dbContext.Employees.FirstOrDefault(e => e.eID == eID);
 
                 if (emp != null)
                 {
                     // remove the employee from the DbContext object and save changes to the database
-                    qlstoreEntity.Employees.Remove(emp);
-                    qlstoreEntity.SaveChanges();
+                    dbContext.Employees.Remove(emp);
+                    dbContext.SaveChanges();
 
                     // return true to indicate success
                     return true;

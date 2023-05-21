@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Convenience_Store_Entyti.UserControlGroup;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -14,7 +15,8 @@ namespace Convenience_Store_Entyti.BS_Layer
         {
             try
             {
-                using (var dbContext = new ConvenienceStoreManagementEntities1())
+                
+                using (var dbContext = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password))
                 {
                     var query = "SELECT TOP (1000) [pID], [pName], [TotalAmount] FROM [ConvenienceStoreManagement].[dbo].[MostFavoriteProducts]";
 
@@ -41,7 +43,8 @@ namespace Convenience_Store_Entyti.BS_Layer
         {
             try
             {
-                using (var dbContext = new ConvenienceStoreManagementEntities1())
+                
+                using (var dbContext = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password))
                 {
                     var query = "SELECT TOP (1000) [pID], [pName], [TotalAmount] FROM [ConvenienceStoreManagement].[dbo].[LeastFavoriteProducts]";
 
@@ -73,10 +76,11 @@ namespace Convenience_Store_Entyti.BS_Layer
             dt.Columns.Add("pPrice");
             dt.Columns.Add("tID");
             dt.Columns.Add("batchID");
-            using (var context = new ConvenienceStoreManagementEntities1())
+            
+            using (var dbContext = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password))
             {
                 string query = "EXEC [dbo].[FindProductByTypeName] @TypeName";
-                var products = context.Database.SqlQuery<Product>(query, new SqlParameter("@TypeName", nameProduct));
+                var products = dbContext.Database.SqlQuery<Product>(query, new SqlParameter("@TypeName", nameProduct));
 
                 // Process the retrieved products as needed
                 foreach (var product in products)
@@ -96,7 +100,8 @@ namespace Convenience_Store_Entyti.BS_Layer
         }
         public DataTable TakeProduct()
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+            
+            var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
             var pro = from p in qlstoreEntity.Products select p;
             DataTable dt = new DataTable();
             dt.Columns.Add("pID");
@@ -112,7 +117,8 @@ namespace Convenience_Store_Entyti.BS_Layer
         }
         public bool AddProduct(string pID, string pName, float pPrice, string tID, string batchID, ref string err)
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+            
+            var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
             Product det = new Product();
             det.pID = pID;
             det.pName = pName;
@@ -125,7 +131,9 @@ namespace Convenience_Store_Entyti.BS_Layer
         }
         public bool DeleteProduct(ref string err, string pID, string tID, string batchID)
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+            
+            var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
+
             Product det = new Product();
             det.pID = pID;
             det.tID = tID;
@@ -137,7 +145,9 @@ namespace Convenience_Store_Entyti.BS_Layer
         }
         public bool UpdateProduct(string pID, string pName, float pPrice, string tID, string batchID, ref string err)
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+            
+            var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
+
             var maQuery = (from det in qlstoreEntity.Products
                            where det.pID == pID
                            select det).SingleOrDefault();

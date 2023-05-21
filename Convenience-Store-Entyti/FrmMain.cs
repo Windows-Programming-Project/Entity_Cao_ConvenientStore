@@ -15,6 +15,7 @@ namespace Convenience_Store_Entyti
 {
     public partial class FrmMain : Form
     {
+        
         public FrmMain()
         {
             InitializeComponent();

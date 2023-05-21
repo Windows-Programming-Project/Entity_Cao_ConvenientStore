@@ -8,11 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
+using System.Data.Entity;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
 
 namespace Convenience_Store_Entyti.UserControlGroup
 {
+    
     public partial class UserControlAcountLogin : UserControl
     {
+        public static string UserLogin = "";
+        public static string Password ="";
         public UserControlAcountLogin()
         {
             InitializeComponent();
@@ -39,7 +46,7 @@ namespace Convenience_Store_Entyti.UserControlGroup
                 return true;
             }
         }
-        
+       
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (verif() == false)
@@ -52,44 +59,53 @@ namespace Convenience_Store_Entyti.UserControlGroup
             }
             else
             {
-                try
-                {
-                    BLEmployee dbEmployee = new BLEmployee();
-                    string role = "";
-                    if (rdBEmployeeFull.Checked == true)
-                    {
-                        role = "FulltimeStaff";
-                    }
-                    if (rdBEmpPart.Checked == true)
-                    {
-                        role = "ParttimeStaff";
-                    }
-                    if (rdBManager.Checked == true)
-                    {
-                        role = "Manager";
-                    }
-                    bool isValidCredentials = dbEmployee.CheckAccountCredentials(tbUserLogin.Text, tbPassword.Text, role);
+                UserControlAcountLogin userControl = new UserControlAcountLogin();
+                UserLogin = tbUserLogin.Text;
+                Password = tbPassword.Text;
+                FrmMain mainForm = new FrmMain();
+                mainForm.ShowDialog();
 
-                    if (isValidCredentials)
-                    {
-                        // Credentials are valid
-                        MessageBox.Show("Login successful!", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                       
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid credentials or role selection!", "Login", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // Handle any exceptions here
-                    MessageBox.Show("Error: " + ex.Message);
-                }
+
+                //try
+                //{
+                //    BLEmployee dbEmployee = new BLEmployee();
+                //    string role = "";
+                //    if (rdBEmployeeFull.Checked == true)
+                //    {
+                //        role = "FulltimeStaff";
+                //    }
+                //    if (rdBEmpPart.Checked == true)
+                //    {
+                //        role = "ParttimeStaff";
+                //    }
+                //    if (rdBManager.Checked == true)
+                //    {
+                //        role = "Manager";
+                //    }
+                //    bool isValidCredentials = dbEmployee.CheckAccountCredentials(tbUserLogin.Text, tbPassword.Text, role);
+
+                //    if (isValidCredentials)
+                //    {
+                //        // Credentials are valid
+                //        MessageBox.Show("Login successful!", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                //    }
+                //    else
+                //    {
+                //        MessageBox.Show("Invalid credentials or role selection!", "Login", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                //    }
+                //}
+                //catch (Exception ex)
+                //{
+                //    // Handle any exceptions here
+                //    MessageBox.Show("Error: " + ex.Message);
+                //}
 
             }
 
         }
     }
+
+    
 }

@@ -198,21 +198,40 @@ namespace Convenience_Store_Entyti.UserControlGroup
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            // Xóa trống các đối tượng trong Panel
-            this.txtIDI.ResetText();
-            this.txtIDP.ResetText();
-            this.txtdAmount.ResetText();
-            this.txtdPrice.ResetText();
-            // Cho thao tác trên các nút Thêm / Sửa / Xóa / Thoát
-            this.btnAdd.Enabled = true;
-            this.btnFix.Enabled = true;
-            this.btnDelete.Enabled = true;
+            try
+            {
+                // Thực hiện lệnh
+                // Lấy thứ tự record hiện hành
+                int r = dgvDETAIL.CurrentCell.RowIndex;
+                string strDE1 = dgvDETAIL.Rows[r].Cells[0].Value.ToString();
+                string strDE2 = dgvDETAIL.Rows[r].Cells[1].Value.ToString();
+                // Viết câu lệnh SQL
+                // Hiện thông báo xác nhận việc xóa mẫu tin
+                // Khai báo biến traloi
+                DialogResult traloi;
+                // Hiện hộp thoại hỏi đáp
+                traloi = MessageBox.Show("Chắc xóa mẫu tin này không?", "Trả lời",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                // Kiểm tra có nhắp chọn nút Ok không?
+                if (traloi == DialogResult.Yes)
+                {
+                    dbTY.DeleteInvoice_Detail(ref err, strDE1, strDE2);
+                    // Cập nhật lại DataGridView
+                    LoadData();
+                    // Thông báo
+                    MessageBox.Show("Đã xóa xong!");
+                }
+                else
+                {
+                    // Thông báo
+                    MessageBox.Show("Không thực hiện việc xóa mẫu tin!");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Không xóa được. Lỗi rồi!");
+            }
 
-            // Không cho thao tác trên các nút Lưu / Hủy / Panel
-            this.btnSave.Enabled = false;
-            this.btnCancel.Enabled = false;
-            this.panel.Enabled = false;
-            dgvDETAIL_CellContentClick(null, null);
         }
 
         private void UserControlInvoice_Detail_Load(object sender, EventArgs e)

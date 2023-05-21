@@ -263,3 +263,4 @@ D:\UTE\year 2 hk2\Window programing\Final project\Entity Cao\Entity_Cao_Convenie
 D:\UTE\year 2 hk2\Window programing\Final project\Entity Cao\Entity_Cao_ConvenientStore\Convenience-Store-Entyti\obj\Debug\Convenience-Store-Entyti.csproj.CopyComplete
 D:\UTE\year 2 hk2\Window programing\Final project\Entity Cao\Entity_Cao_ConvenientStore\Convenience-Store-Entyti\obj\Debug\Convenience-Store-Entyti.exe
 D:\UTE\year 2 hk2\Window programing\Final project\Entity Cao\Entity_Cao_ConvenientStore\Convenience-Store-Entyti\obj\Debug\Convenience-Store-Entyti.pdb
+D:\UTE\year 2 hk2\Window programing\Final project\Entity Cao\Entity_Cao_ConvenientStore\Convenience-Store-Entyti\obj\Debug\Convenience_Store_Entyti.BS_Layer.FormLogin.resources
