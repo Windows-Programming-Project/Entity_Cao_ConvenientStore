@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Convenience_Store_Entyti.UserControlGroup;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -10,10 +12,50 @@ namespace Convenience_Store_Entyti.BS_Layer
 {
     class BLLoyalCustomers
     {
+        public DataTable FindCustomersByName(string name)
+        {
+            try
+            {
+               
+                using (var dbContext = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password))
+                {
+                    var query = dbContext.Database.SqlQuery<LoyalCustomer>(
+                        "SELECT * FROM dbo.FindCustomersByName(@name)",
+                        new SqlParameter("@name", name)
+                    );
+
+                    DataTable dataTable = new DataTable();
+                    dataTable.Columns.Add("CID", typeof(string));
+                    dataTable.Columns.Add("CName", typeof(string));
+                    dataTable.Columns.Add("TotalPay", typeof(float));
+                    dataTable.Columns.Add("CPhoneNum", typeof(string));
+                    dataTable.Columns.Add("RName", typeof(string));
+
+                    foreach (var row in query)
+                    {
+                        dataTable.Rows.Add(
+                            row.cID.ToString(),
+                            row.cName,
+                            row.cTotalpay,
+                            row.cPhoneNum,
+                            row.rName
+                        );
+                    }
+
+                    return dataTable;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error executing FindCustomersByName function: " + ex.Message);
+                return null;
+            }
+        }
         public DataTable TakeLoyalCustomers()
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
-            var det = from p in qlstoreEntity.LoyalCustomers select p;
+           
+            var dbContext = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
+                var det = from p in dbContext.LoyalCustomers select p;
             DataTable dt = new DataTable();
             dt.Columns.Add("cID");
             dt.Columns.Add("cName");
@@ -31,9 +73,8 @@ namespace Convenience_Store_Entyti.BS_Layer
             try
             {
                 // create a new instance of the DbContext object
-                ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
-
-                // create a new instance of the LoyalCustomers object and set its properties
+               
+                var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);// create a new instance of the LoyalCustomers object and set its properties
                 LoyalCustomer cust = new LoyalCustomer();
                 cust.cID = cID;
                 cust.cName = cName;
@@ -62,11 +103,12 @@ namespace Convenience_Store_Entyti.BS_Layer
             try
             {
                 // create a new instance of the DbContext object
-                ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+               
+                var dbContext = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
 
-                // retrieve the existing LoyalCustomers from the database using the specified cID
-                LoyalCustomer cust = qlstoreEntity.LoyalCustomers.FirstOrDefault(c => c.cID == cID);
-
+                    // retrieve the existing LoyalCustomers from the database using the specified cID
+                    LoyalCustomer cust = dbContext.LoyalCustomers.FirstOrDefault(c => c.cID == cID);
+                
                 if (cust != null)
                 {
                     // update the LoyalCustomers's properties with the provided parameters
@@ -76,7 +118,7 @@ namespace Convenience_Store_Entyti.BS_Layer
                     cust.rName = rName;
 
                     // save changes to the database
-                    qlstoreEntity.SaveChanges();
+                    dbContext.SaveChanges();
 
                     // return true to indicate success
                     return true;
@@ -104,9 +146,8 @@ namespace Convenience_Store_Entyti.BS_Layer
             try
             {
                 // create a new instance of the DbContext object
-                ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
-
-                // retrieve the LoyalCustomers to be deleted from the database using the specified cID
+               
+                var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);// retrieve the LoyalCustomers to be deleted from the database using the specified cID
                 LoyalCustomer cust = qlstoreEntity.LoyalCustomers.FirstOrDefault(c => c.cID == cID);
 
                 if (cust != null)
@@ -142,7 +183,8 @@ namespace Convenience_Store_Entyti.BS_Layer
         {
             try
             {
-                using (var dbContext = new ConvenienceStoreManagementEntities1())
+               
+                using (var dbContext = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password))
                 {
                     var query = "SELECT TOP (1000) [cID], [cName], [TotalProducts] FROM [ConvenienceStoreManagement].[dbo].[LoyalCustomerMostProducts]";
 
@@ -169,7 +211,8 @@ namespace Convenience_Store_Entyti.BS_Layer
         {
             try
             {
-                using (var dbContext = new ConvenienceStoreManagementEntities1())
+               
+                using (var dbContext = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password))
                 {
                     var customer = dbContext.LoyalCustomers.FirstOrDefault(c => c.cPhoneNum == phoneNumber);
 

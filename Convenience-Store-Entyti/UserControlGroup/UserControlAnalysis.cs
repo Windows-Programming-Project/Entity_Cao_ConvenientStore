@@ -92,8 +92,22 @@ namespace Convenience_Store_Entyti.UserControlGroup
         }
         private void btEmployee_Diligent_Click(object sender, EventArgs e)
         {
-            DateTime month = new DateTime(2023, 2, 1);
-            LoadData( db.GetMostDiligentEmployees(month) );
+            
+            string monthText = tbGetInforAna.Text;
+            DateTime month;
+
+            if (DateTime.TryParse(monthText, out month))
+            {
+                LoadData(db.GetMostDiligentEmployees(month));
+            }
+            else
+            {
+                // Parsing failed, handle the error or provide a default value
+                // In this case, you may choose to display an error message to the user
+                MessageBox.Show("Invalid month format. Please enter the month in yyyy-MM format.");
+            }
+
+            
         }
 
         private void btnView5productOntop_Click(object sender, EventArgs e)
@@ -103,8 +117,20 @@ namespace Convenience_Store_Entyti.UserControlGroup
 
         private void btnEMPhightIncome_Click(object sender, EventArgs e)
         {
-            DateTime month = new DateTime(2023, 2, 1);
-            LoadData(db.GetHighestIncomeEmployees(month));
+            string monthText = tbGetInforAna.Text;
+            DateTime month;
+
+            if (DateTime.TryParse(monthText, out month))
+            {
+                LoadData(db.GetHighestIncomeEmployees(month));
+            }
+            else
+            {
+                // Parsing failed, handle the error or provide a default value
+                // In this case, you may choose to display an error message to the user
+                MessageBox.Show("Invalid month format. Please enter the month in yyyy-MM format.");
+            }
+           
         }
 
         private void btnSearchCTMbuy_Click(object sender, EventArgs e)

@@ -29,11 +29,7 @@
         private void InitializeComponent()
         {
             this.panelEvent = new System.Windows.Forms.Panel();
-            this.panelTop = new System.Windows.Forms.Panel();
-            this.panelShowOnMainForm = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btEmployee_Shift = new System.Windows.Forms.Button();
-            this.btEmployee_late = new System.Windows.Forms.Button();
             this.ptbHome = new System.Windows.Forms.PictureBox();
             this.ptbSetting = new System.Windows.Forms.PictureBox();
             this.ptbShutDown = new System.Windows.Forms.PictureBox();
@@ -50,12 +46,16 @@
             this.btCustomerManagement = new System.Windows.Forms.Button();
             this.btEmployeeManagement = new System.Windows.Forms.Button();
             this.btOrder = new System.Windows.Forms.Button();
+            this.panelTop = new System.Windows.Forms.Panel();
+            this.btEmployee_Shift = new System.Windows.Forms.Button();
+            this.btEmployee_late = new System.Windows.Forms.Button();
+            this.panelShowOnMainForm = new System.Windows.Forms.Panel();
             this.panelEvent.SuspendLayout();
-            this.panelTop.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbHome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbSetting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbShutDown)).BeginInit();
+            this.panelTop.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelEvent
@@ -83,25 +83,6 @@
             this.panelEvent.Size = new System.Drawing.Size(310, 1080);
             this.panelEvent.TabIndex = 2;
             // 
-            // panelTop
-            // 
-            this.panelTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(136)))), ((int)(((byte)(209)))));
-            this.panelTop.Controls.Add(this.btEmployee_Shift);
-            this.panelTop.Controls.Add(this.btEmployee_late);
-            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTop.Location = new System.Drawing.Point(310, 0);
-            this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(1610, 71);
-            this.panelTop.TabIndex = 3;
-            // 
-            // panelShowOnMainForm
-            // 
-            this.panelShowOnMainForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelShowOnMainForm.Location = new System.Drawing.Point(310, 71);
-            this.panelShowOnMainForm.Name = "panelShowOnMainForm";
-            this.panelShowOnMainForm.Size = new System.Drawing.Size(1610, 1009);
-            this.panelShowOnMainForm.TabIndex = 4;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.ptbHome);
@@ -109,40 +90,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(310, 147);
             this.panel1.TabIndex = 3;
-            // 
-            // btEmployee_Shift
-            // 
-            this.btEmployee_Shift.FlatAppearance.BorderSize = 0;
-            this.btEmployee_Shift.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btEmployee_Shift.Font = new System.Drawing.Font("Dubai", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btEmployee_Shift.ForeColor = System.Drawing.Color.White;
-            this.btEmployee_Shift.Image = global::Convenience_Store_Entyti.Properties.Resources.employee1;
-            this.btEmployee_Shift.Location = new System.Drawing.Point(349, 12);
-            this.btEmployee_Shift.Name = "btEmployee_Shift";
-            this.btEmployee_Shift.Size = new System.Drawing.Size(346, 44);
-            this.btEmployee_Shift.TabIndex = 0;
-            this.btEmployee_Shift.Text = "Employee  Shift";
-            this.btEmployee_Shift.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btEmployee_Shift.UseVisualStyleBackColor = true;
-            this.btEmployee_Shift.Visible = false;
-            this.btEmployee_Shift.Click += new System.EventHandler(this.btEmployee_Shift_Click);
-            // 
-            // btEmployee_late
-            // 
-            this.btEmployee_late.FlatAppearance.BorderSize = 0;
-            this.btEmployee_late.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btEmployee_late.Font = new System.Drawing.Font("Dubai", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btEmployee_late.ForeColor = System.Drawing.Color.White;
-            this.btEmployee_late.Image = global::Convenience_Store_Entyti.Properties.Resources.employee1;
-            this.btEmployee_late.Location = new System.Drawing.Point(24, 12);
-            this.btEmployee_late.Name = "btEmployee_late";
-            this.btEmployee_late.Size = new System.Drawing.Size(406, 44);
-            this.btEmployee_late.TabIndex = 0;
-            this.btEmployee_late.Text = "Employee Late";
-            this.btEmployee_late.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btEmployee_late.UseVisualStyleBackColor = true;
-            this.btEmployee_late.Visible = false;
-            this.btEmployee_late.Click += new System.EventHandler(this.btEmployee_late_Click);
             // 
             // ptbHome
             // 
@@ -386,6 +333,59 @@
             this.btOrder.UseVisualStyleBackColor = true;
             this.btOrder.Click += new System.EventHandler(this.btOrder_Click);
             // 
+            // panelTop
+            // 
+            this.panelTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(136)))), ((int)(((byte)(209)))));
+            this.panelTop.Controls.Add(this.btEmployee_Shift);
+            this.panelTop.Controls.Add(this.btEmployee_late);
+            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTop.Location = new System.Drawing.Point(310, 0);
+            this.panelTop.Name = "panelTop";
+            this.panelTop.Size = new System.Drawing.Size(1610, 71);
+            this.panelTop.TabIndex = 3;
+            // 
+            // btEmployee_Shift
+            // 
+            this.btEmployee_Shift.FlatAppearance.BorderSize = 0;
+            this.btEmployee_Shift.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btEmployee_Shift.Font = new System.Drawing.Font("Dubai", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btEmployee_Shift.ForeColor = System.Drawing.Color.White;
+            this.btEmployee_Shift.Image = global::Convenience_Store_Entyti.Properties.Resources.employee1;
+            this.btEmployee_Shift.Location = new System.Drawing.Point(349, 12);
+            this.btEmployee_Shift.Name = "btEmployee_Shift";
+            this.btEmployee_Shift.Size = new System.Drawing.Size(346, 44);
+            this.btEmployee_Shift.TabIndex = 0;
+            this.btEmployee_Shift.Text = "Employee  Shift";
+            this.btEmployee_Shift.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btEmployee_Shift.UseVisualStyleBackColor = true;
+            this.btEmployee_Shift.Visible = false;
+            this.btEmployee_Shift.Click += new System.EventHandler(this.btEmployee_Shift_Click);
+            // 
+            // btEmployee_late
+            // 
+            this.btEmployee_late.FlatAppearance.BorderSize = 0;
+            this.btEmployee_late.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btEmployee_late.Font = new System.Drawing.Font("Dubai", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btEmployee_late.ForeColor = System.Drawing.Color.White;
+            this.btEmployee_late.Image = global::Convenience_Store_Entyti.Properties.Resources.employee1;
+            this.btEmployee_late.Location = new System.Drawing.Point(24, 12);
+            this.btEmployee_late.Name = "btEmployee_late";
+            this.btEmployee_late.Size = new System.Drawing.Size(406, 44);
+            this.btEmployee_late.TabIndex = 0;
+            this.btEmployee_late.Text = "Employee Late";
+            this.btEmployee_late.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btEmployee_late.UseVisualStyleBackColor = true;
+            this.btEmployee_late.Visible = false;
+            this.btEmployee_late.Click += new System.EventHandler(this.btEmployee_late_Click);
+            // 
+            // panelShowOnMainForm
+            // 
+            this.panelShowOnMainForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelShowOnMainForm.Location = new System.Drawing.Point(310, 71);
+            this.panelShowOnMainForm.Name = "panelShowOnMainForm";
+            this.panelShowOnMainForm.Size = new System.Drawing.Size(1610, 1009);
+            this.panelShowOnMainForm.TabIndex = 4;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -399,11 +399,11 @@
             this.RightToLeftLayout = true;
             this.Text = "Managerment ConvinienceStore";
             this.panelEvent.ResumeLayout(false);
-            this.panelTop.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ptbHome)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbSetting)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbShutDown)).EndInit();
+            this.panelTop.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

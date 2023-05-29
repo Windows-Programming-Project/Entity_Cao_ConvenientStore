@@ -7,7 +7,7 @@ using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using Convenience_Store_Entyti;
-
+using Convenience_Store_Entyti.UserControlGroup;
 
 
 
@@ -17,7 +17,9 @@ namespace Convenience_Store_Entyti.BS_Layer
     {
         public DataTable TakeEmployeeShift()
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+           
+            var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
+            
             var Employees = from p in qlstoreEntity.Employees select p;
           
             DataTable dt = new DataTable();

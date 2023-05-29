@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Convenience_Store_Entyti.UserControlGroup;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -12,7 +13,9 @@ namespace Convenience_Store_Entyti.BS_Layer
     {
         public DataTable TakeEmployeeLate()
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+           
+            var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
+
             var det = from p in qlstoreEntity.EmployeeLates select p;
             DataTable dt = new DataTable();
             dt.Columns.Add("eID");
@@ -31,7 +34,9 @@ namespace Convenience_Store_Entyti.BS_Layer
             try
             {
                 // create a new instance of the DbContext object
-                ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+               
+                var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
+
 
                 EmployeeLate emplate = new EmployeeLate();
                 emplate.eID = eID;
@@ -60,9 +65,8 @@ namespace Convenience_Store_Entyti.BS_Layer
             try
             {
                 // create a new instance of the DbContext object
-                ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
-
-                // retrieve the existing LoyalCustomers from the database using the specified cID
+               
+                var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password); // retrieve the existing LoyalCustomers from the database using the specified cID
                 EmployeeLate emplate = qlstoreEntity.EmployeeLates.FirstOrDefault(c => c.eID == eID);
 
                 if (emplate != null)
@@ -95,15 +99,16 @@ namespace Convenience_Store_Entyti.BS_Layer
                 return false;
             }
         }
-        public bool DeleteLoyalCustomers(string eID, ref string err)
+        public bool DeleteEmployeeLate(string eID, ref string err)
         {
             try
             {
                 // create a new instance of the DbContext object
-                ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+               
+                var qlstoreEntity = new ConvenienceStoreManagementEntities1(UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
 
                 // retrieve the LoyalCustomers to be deleted from the database using the specified cID
-               EmployeeLate emplate = qlstoreEntity.EmployeeLates.FirstOrDefault(c => c.eID == eID);
+                EmployeeLate emplate = qlstoreEntity.EmployeeLates.FirstOrDefault(c => c.eID == eID);
 
                 if (emplate != null)
                 {

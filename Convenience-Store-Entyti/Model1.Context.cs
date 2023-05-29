@@ -14,14 +14,48 @@ namespace Convenience_Store_Entyti
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
+    using System.Configuration;
+    using System.Data.SqlClient;
+    using System.Data.Entity.Core.EntityClient;
 
+    //<add name = "ConvenienceStoreEntities" connectionString="metadata=res://*/CStore.csdl|res://*/CStore.ssdl|res://*/CStore.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(local);initial catalog=ConvenienceStore;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+    //<add name = "ConvenienceStoreEntitiesNew" connectionString="metadata=res://*/CStore.csdl|res://*/CStore.ssdl|res://*/CStore.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(local);initial catalog=ConvenienceStore;integrated security=True;multiple active result sets=True;application name=EntityFramework;MultipleActiveResultSets=True&quot;" providerName="System.Data.EntityClient" />
+    //<add name = "ConvenienceStoreEntity" connectionString="metadata=res://*/CStoreNew.csdl|res://*/CStoreNew.ssdl|res://*/CStoreNew.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(local);initial catalog=ConvenienceStore;integrated security=True;multiple active result sets=True;application name=EntityFramework;MultipleActiveResultSets=True&quot;" providerName="System.Data.EntityClient" />
+    //<add name = "ConvenienceStoreEntityNew" connectionString="metadata=res://*/csdl|res://*/ssdl|res://*/msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(local);initial catalog=ConvenienceStore;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+    //<add name = "ConvenienceStoreManagementEntities" connectionString="metadata=res://*/ConvenienceStoreManagement.csdl|res://*/ConvenienceStoreManagement.ssdl|res://*/ConvenienceStoreManagement.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=CAO;initial catalog=ConvenienceStoreManagement;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+    //<add name = "ConvenienceStoreManagementEntities1" connectionString="metadata=res://*/ConvenientStoreManagement.csdl|res://*/ConvenientStoreManagement.ssdl|res://*/ConvenientStoreManagement.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=CAO;initial catalog=ConvenienceStoreManagement;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+    // <connectionStrings>
+    //<add name = "ConvenienceStoreManagementEntitie" connectionString="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=CAO;initial catalog=ConvenienceStoreManagement;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+    //</connectionStrings>
     public partial class ConvenienceStoreManagementEntities1 : DbContext
     {
-        public ConvenienceStoreManagementEntities1()
-            : base("name=ConvenienceStoreManagementEntitie")
+        public ConvenienceStoreManagementEntities1(string userId, string password)
+      : base(BuildConnectionString(userId, password))
         {
         }
+        private static string BuildConnectionString( string userId, string password)
+        {
+           
+                string dataSource = "CAO";
+                string initialCatalog = "ConvenienceStoreManagement";
+               
 
+                SqlConnectionStringBuilder sqlBuilder = new SqlConnectionStringBuilder();
+                sqlBuilder.DataSource = dataSource;
+                sqlBuilder.InitialCatalog = initialCatalog;
+                sqlBuilder.UserID =userId;
+                sqlBuilder.Password = password;
+                sqlBuilder.MultipleActiveResultSets = true;
+                sqlBuilder.ApplicationName = "EntityFramework";
+
+                EntityConnectionStringBuilder entityBuilder = new EntityConnectionStringBuilder();
+                entityBuilder.Metadata = "res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl";
+                entityBuilder.Provider = "System.Data.SqlClient";
+                entityBuilder.ProviderConnectionString = sqlBuilder.ToString();
+
+                return entityBuilder.ToString();
+            
+        }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Employee>()

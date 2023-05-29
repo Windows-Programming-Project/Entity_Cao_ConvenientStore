@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Convenience_Store_Entyti.UserControlGroup;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -11,7 +12,8 @@ namespace Convenience_Store_Entyti.BS_Layer
     {
         public DataTable TakeSupplier()
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+           
+            var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
             var sups = from p in qlstoreEntity.Suppliers select p;
             DataTable dt = new DataTable();
             dt.Columns.Add("sID");
@@ -25,7 +27,9 @@ namespace Convenience_Store_Entyti.BS_Layer
         }
         public bool AddSupplier(string sID, string mID, string sName, ref string err)
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+
+           
+            var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
             Supplier sup = new Supplier();
             sup.sID = sID; sup.mID = mID; sup.sName = sName;
             qlstoreEntity.Suppliers.Add(sup);
@@ -34,7 +38,9 @@ namespace Convenience_Store_Entyti.BS_Layer
         }
         public bool DeleteSupplier(ref string err, string sID)
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+
+           
+            var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
             Supplier sup = new Supplier();
             sup.sID = sID;
             qlstoreEntity.Suppliers.Attach(sup);
@@ -44,7 +50,9 @@ namespace Convenience_Store_Entyti.BS_Layer
         }
         public bool UpdateSupplier(string sID, string mID, string sName, ref string err)
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+
+           
+            var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
             var supQuery = (from sup in qlstoreEntity.Suppliers
                            where sup.sID == sID
                            select sup).SingleOrDefault();

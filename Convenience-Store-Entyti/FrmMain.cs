@@ -15,6 +15,7 @@ namespace Convenience_Store_Entyti
 {
     public partial class FrmMain : Form
     {
+        
         public FrmMain()
         {
             InitializeComponent();
@@ -197,5 +198,7 @@ namespace Convenience_Store_Entyti
             panelShowOnMainForm.Controls.Clear();
             panelShowOnMainForm.Controls.Add(userControl);
         }
+
+       
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Convenience_Store_Entyti.UserControlGroup;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -12,7 +13,9 @@ namespace Convenience_Store_Entyti.BS_Layer
     {
         public DataTable TakeRanks()
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+           
+            var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
+
             var det = from p in qlstoreEntity.Ranks select p;
             DataTable dt = new DataTable();
             dt.Columns.Add("rName");
@@ -29,10 +32,12 @@ namespace Convenience_Store_Entyti.BS_Layer
             try
             {
                 // create a new instance of the DbContext object
-                ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+               
+                var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
+
 
                 // create a new instance of the LoyalCustomers object and set its properties
-               Rank rank = new Rank();
+                Rank rank = new Rank();
                 rank.rName = rName;
                 rank.rDiscount = rDiscount;
 
@@ -57,7 +62,9 @@ namespace Convenience_Store_Entyti.BS_Layer
             try
             {
                 // create a new instance of the DbContext object
-                ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+               
+                var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
+
 
                 // retrieve the existing LoyalCustomers from the database using the specified cID
                 Rank rank = qlstoreEntity.Ranks.FirstOrDefault(c => c.rName == rName);
@@ -97,9 +104,11 @@ namespace Convenience_Store_Entyti.BS_Layer
             try
             {
                 // create a new instance of the DbContext object
-                ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+               
+                var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
 
-              
+
+
                 Rank rank = qlstoreEntity.Ranks.FirstOrDefault(c => c.rName == rName);
 
                 if (rank != null)

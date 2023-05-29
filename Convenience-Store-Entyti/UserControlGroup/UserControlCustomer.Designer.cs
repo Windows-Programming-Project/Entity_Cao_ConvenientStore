@@ -38,13 +38,15 @@
             this.txtNameCTM = new System.Windows.Forms.TextBox();
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtrNameRank = new System.Windows.Forms.TextBox();
             this.txtIDCTM = new System.Windows.Forms.TextBox();
             this.btnDeleteCTM = new System.Windows.Forms.Button();
             this.btnChangedCTM = new System.Windows.Forms.Button();
             this.btnAddCTM = new System.Windows.Forms.Button();
             this.btnExitCTM = new System.Windows.Forms.Button();
-            this.txtrNameRank = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btFindCTM = new Convenience_Store_Entyti.RJControl.DesignButtonControl();
+            this.txtFindCTM = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomer)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -125,13 +127,13 @@
             this.dgvCustomer.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCustomer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvCustomer.Location = new System.Drawing.Point(0, 519);
+            this.dgvCustomer.Location = new System.Drawing.Point(0, 358);
             this.dgvCustomer.Name = "dgvCustomer";
             this.dgvCustomer.RowHeadersWidth = 51;
             this.dgvCustomer.RowTemplate.Height = 24;
-            this.dgvCustomer.Size = new System.Drawing.Size(1745, 281);
+            this.dgvCustomer.Size = new System.Drawing.Size(1745, 442);
             this.dgvCustomer.TabIndex = 22;
-        //    this.dgvCustomer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomer_CellContentClick_1);
+            this.dgvCustomer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomer_CellClick);
             // 
             // panel1
             // 
@@ -149,6 +151,23 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(820, 349);
             this.panel1.TabIndex = 21;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(39, 305);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 16);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Name Rank";
+            // 
+            // txtrNameRank
+            // 
+            this.txtrNameRank.Location = new System.Drawing.Point(22, 276);
+            this.txtrNameRank.Multiline = true;
+            this.txtrNameRank.Name = "txtrNameRank";
+            this.txtrNameRank.Size = new System.Drawing.Size(267, 45);
+            this.txtrNameRank.TabIndex = 2;
             // 
             // txtIDCTM
             // 
@@ -198,27 +217,40 @@
             this.btnExitCTM.UseVisualStyleBackColor = true;
             this.btnExitCTM.Click += new System.EventHandler(this.btnExitCTM_Click_1);
             // 
-            // txtrNameRank
+            // btFindCTM
             // 
-            this.txtrNameRank.Location = new System.Drawing.Point(22, 276);
-            this.txtrNameRank.Multiline = true;
-            this.txtrNameRank.Name = "txtrNameRank";
-            this.txtrNameRank.Size = new System.Drawing.Size(267, 45);
-            this.txtrNameRank.TabIndex = 2;
+            this.btFindCTM.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(218)))), ((int)(((byte)(93)))));
+            this.btFindCTM.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(218)))), ((int)(((byte)(93)))));
+            this.btFindCTM.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btFindCTM.BorderRadius = 20;
+            this.btFindCTM.BorderSize = 0;
+            this.btFindCTM.FlatAppearance.BorderSize = 0;
+            this.btFindCTM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btFindCTM.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.btFindCTM.Location = new System.Drawing.Point(981, 283);
+            this.btFindCTM.Name = "btFindCTM";
+            this.btFindCTM.Size = new System.Drawing.Size(150, 40);
+            this.btFindCTM.TabIndex = 46;
+            this.btFindCTM.Text = "Find Customer";
+            this.btFindCTM.TextColor = System.Drawing.Color.RoyalBlue;
+            this.btFindCTM.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btFindCTM.UseVisualStyleBackColor = false;
+            this.btFindCTM.Click += new System.EventHandler(this.btFindCTM_Click);
             // 
-            // label1
+            // txtFindCTM
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(39, 305);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 16);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Name Rank";
+            this.txtFindCTM.Location = new System.Drawing.Point(1157, 276);
+            this.txtFindCTM.Multiline = true;
+            this.txtFindCTM.Name = "txtFindCTM";
+            this.txtFindCTM.Size = new System.Drawing.Size(263, 48);
+            this.txtFindCTM.TabIndex = 45;
             // 
             // UserControlCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btFindCTM);
+            this.Controls.Add(this.txtFindCTM);
             this.Controls.Add(this.btnExitCTM);
             this.Controls.Add(this.btnReloadCTM);
             this.Controls.Add(this.dgvCustomer);
@@ -233,6 +265,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -255,5 +288,7 @@
         private System.Windows.Forms.Button btnExitCTM;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtrNameRank;
+        private RJControl.DesignButtonControl btFindCTM;
+        private System.Windows.Forms.TextBox txtFindCTM;
     }
 }

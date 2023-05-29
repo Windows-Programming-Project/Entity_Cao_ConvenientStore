@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Convenience_Store_Entyti.UserControlGroup;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -11,22 +12,44 @@ namespace Convenience_Store_Entyti.BS_Layer
     {
         public DataTable TakeInvoice_Detail()
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
-            var det = from p in qlstoreEntity.Invoice_Detail select p;
-            DataTable dt = new DataTable();
-            dt.Columns.Add("iID");
-            dt.Columns.Add("pID");
-            dt.Columns.Add("dAmount");
-            dt.Columns.Add("dPrice");
-            foreach (var p in det)
+            try
             {
-                dt.Rows.Add(p.iID, p.pID, p.dAmount, p.dPrice);
+               
+                using (var dbContext = new ConvenienceStoreManagementEntities1(UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password))
+                {
+                    var query = from detail in dbContext.Invoice_Detail
+                                select new
+                                {
+                                    detail.iID,
+                                    detail.pID,
+                                    detail.dAmount,
+                                    detail.dPrice
+                                };
+
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("iID");
+                    dt.Columns.Add("pID");
+                    dt.Columns.Add("dAmount");
+                    dt.Columns.Add("dPrice");
+
+                    foreach (var item in query)
+                    {
+                        dt.Rows.Add(item.iID, item.pID, item.dAmount, item.dPrice);
+                    }
+
+                    return dt;
+                }
             }
-            return dt;
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error retrieving invoice details: " + ex.Message);
+                return null;
+            }
         }
         public DataTable TakeInvoice_Detail_order(string invoiceID)
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+           
+            var qlstoreEntity = new ConvenienceStoreManagementEntities1(UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
             // Retrieve the Invoice_Detail records and join with the Product table to get the product names
             var detailQuery = from d in qlstoreEntity.Invoice_Detail
                               join p in qlstoreEntity.Products on d.pID equals p.pID
@@ -46,7 +69,9 @@ namespace Convenience_Store_Entyti.BS_Layer
         }
         public bool AddInvoice_Detail(string iID, string pID, int dAmount, float dPrice, ref string err)
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+           
+            var qlstoreEntity = new ConvenienceStoreManagementEntities1(UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
+               
             Invoice_Detail det = new Invoice_Detail();
             det.iID = iID; 
             det.pID = pID; 
@@ -58,18 +83,32 @@ namespace Convenience_Store_Entyti.BS_Layer
         }
         public bool DeleteInvoice_Detail(ref string err, string iID, string pID)
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
-            Invoice_Detail det = new Invoice_Detail();
-            det.iID = iID;
-            det.pID = pID;
-            qlstoreEntity.Invoice_Detail.Attach(det);
-            qlstoreEntity.Invoice_Detail.Remove(det);
-            qlstoreEntity.SaveChanges();
-            return true;
+            try
+            {
+               
+                using (var dbContext = new ConvenienceStoreManagementEntities1(UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password))
+                {
+                    var invoiceDetail = dbContext.Invoice_Detail.FirstOrDefault(detail => detail.iID == iID && detail.pID == pID);
+
+                    if (invoiceDetail != null)
+                    {
+                        dbContext.Invoice_Detail.Remove(invoiceDetail);
+                        dbContext.SaveChanges();
+                    }
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                err = "Error deleting invoice detail: " + ex.Message;
+                return false;
+            }
         }
         public bool UpdateInvoice_Detail(string iID, string pID, int dAmount, float dPrice, ref string err)
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+           
+            var qlstoreEntity = new ConvenienceStoreManagementEntities1(UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
             var maQuery = (from det in qlstoreEntity.Invoice_Detail
                            where det.iID == iID && det.pID == pID
             select det).SingleOrDefault();

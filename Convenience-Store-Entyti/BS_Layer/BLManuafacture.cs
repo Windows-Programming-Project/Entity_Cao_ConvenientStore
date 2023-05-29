@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Convenience_Store_Entyti.UserControlGroup;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -11,7 +12,8 @@ namespace Convenience_Store_Entyti.BS_Layer
     {
         public DataTable TakeManuafacturer()
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+           
+            var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
             var mas = from p in qlstoreEntity.Manuafacturers select p;
             DataTable dt = new DataTable();
             dt.Columns.Add("mID");
@@ -25,8 +27,8 @@ namespace Convenience_Store_Entyti.BS_Layer
         }
         public bool AddManuafacturer(string mID, string mName,string mLocation, ref string err)
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
-            Manuafacturer ma = new Manuafacturer();
+           
+            var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password); Manuafacturer ma = new Manuafacturer();
             ma.mID = mID; ma.mName = mName;ma.mLocation = mLocation;
             qlstoreEntity.Manuafacturers.Add(ma);
             qlstoreEntity.SaveChanges();
@@ -34,7 +36,8 @@ namespace Convenience_Store_Entyti.BS_Layer
         }
         public bool DeleteManuafacturerr(ref string err, string mID)
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+           
+            var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password); 
             Manuafacturer ma = new Manuafacturer();
             ma.mID = mID;
             qlstoreEntity.Manuafacturers.Attach(ma);
@@ -44,7 +47,7 @@ namespace Convenience_Store_Entyti.BS_Layer
         }
         public bool UpdateManuafacturer(string mID, string mName,string mLocation, ref string err)
         {
-            ConvenienceStoreManagementEntities1 qlstoreEntity = new ConvenienceStoreManagementEntities1();
+             var qlstoreEntity = new ConvenienceStoreManagementEntities1( UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password);
             var maQuery = (from ma in qlstoreEntity.Manuafacturers
                            where ma.mID == mID
                            select ma).SingleOrDefault();
