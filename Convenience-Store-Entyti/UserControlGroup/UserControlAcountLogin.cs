@@ -18,8 +18,8 @@ namespace Convenience_Store_Entyti.UserControlGroup
     
     public partial class UserControlAcountLogin : UserControl
     {
-        public static string UserLogin = "";
-        public static string Password ="";
+        public static string UserLogin = "admin";
+        public static string Password ="123";
         public UserControlAcountLogin()
         {
             InitializeComponent();

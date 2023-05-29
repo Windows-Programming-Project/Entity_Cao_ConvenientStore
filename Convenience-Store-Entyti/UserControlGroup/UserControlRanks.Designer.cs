@@ -43,12 +43,14 @@
             // 
             // dgvRank
             // 
+            this.dgvRank.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvRank.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvRank.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRank.Location = new System.Drawing.Point(81, 123);
+            this.dgvRank.Location = new System.Drawing.Point(0, 98);
             this.dgvRank.Name = "dgvRank";
             this.dgvRank.RowHeadersWidth = 51;
             this.dgvRank.RowTemplate.Height = 24;
-            this.dgvRank.Size = new System.Drawing.Size(625, 342);
+            this.dgvRank.Size = new System.Drawing.Size(706, 582);
             this.dgvRank.TabIndex = 0;
             this.dgvRank.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRank_CellContentClick);
             // 
@@ -103,7 +105,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(120, 61);
+            this.label2.Location = new System.Drawing.Point(27, 28);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 32);
             this.label2.TabIndex = 2;
@@ -151,7 +153,7 @@
             this.Controls.Add(this.tbRankName);
             this.Controls.Add(this.dgvRank);
             this.Name = "UserControlRanks";
-            this.Size = new System.Drawing.Size(1465, 497);
+            this.Size = new System.Drawing.Size(1465, 680);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRank)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

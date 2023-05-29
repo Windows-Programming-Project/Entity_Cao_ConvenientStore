@@ -108,7 +108,7 @@ namespace Convenience_Store_Entyti.BS_Layer
 
                     // retrieve the existing LoyalCustomers from the database using the specified cID
                     LoyalCustomer cust = dbContext.LoyalCustomers.FirstOrDefault(c => c.cID == cID);
-
+                
                 if (cust != null)
                 {
                     // update the LoyalCustomers's properties with the provided parameters

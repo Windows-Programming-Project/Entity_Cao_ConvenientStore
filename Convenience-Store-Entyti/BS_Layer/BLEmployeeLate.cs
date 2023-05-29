@@ -99,7 +99,7 @@ namespace Convenience_Store_Entyti.BS_Layer
                 return false;
             }
         }
-        public bool DeleteLoyalCustomers(string eID, ref string err)
+        public bool DeleteEmployeeLate(string eID, ref string err)
         {
             try
             {

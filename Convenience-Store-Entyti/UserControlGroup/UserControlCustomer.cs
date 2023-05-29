@@ -35,7 +35,7 @@ namespace Convenience_Store_Entyti.DanhMuc
                 // chang size table
                 dgvCustomer.AutoResizeColumns();
                 //
-                dgvCustomer_CellContentClick(null, null);
+                dgvCustomer_CellClick(null, null);
                 Add = true;
             }
             catch
@@ -47,8 +47,7 @@ namespace Convenience_Store_Entyti.DanhMuc
         {
            // LoadDataCustomer();
         }
-       
-        private void dgvCustomer_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int r = dgvCustomer.CurrentCell.RowIndex;
             txtIDCTM.Text = dgvCustomer.Rows[r].Cells[0].Value.ToString();
@@ -56,10 +55,10 @@ namespace Convenience_Store_Entyti.DanhMuc
             txtTotalPayCTM.Text = dgvCustomer.Rows[r].Cells[2].Value.ToString();
             txtPhoneCTM.Text = dgvCustomer.Rows[r].Cells[3].Value.ToString();
             txtrNameRank.Text = dgvCustomer.Rows[r].Cells[4].Value.ToString();
-
         }
-        #region button Customer
        
+        #region button Customer
+
 
 
         private void btnAddCTM_Click_1(object sender, EventArgs e)
@@ -105,21 +104,34 @@ namespace Convenience_Store_Entyti.DanhMuc
 
         private void btnChangedCTM_Click_1(object sender, EventArgs e)
         {
-            if (Add)
+            if (Add && txtPhoneCTM.Text != "")
             {
                 try
                 {
                     BLLoyalCustomers blCTM = new BLLoyalCustomers();
-                    blCTM.UpdateLoyalCustomers(txtIDCTM.Text, txtNameCTM.Text, Int32.Parse(txtTotalPayCTM.Text), txtPhoneCTM.Text, txtrNameRank.Text, ref err);
-                    LoadDataCustomer();
-                    if (err != null && Add == false)
+                    int result;
+                    if (Int32.TryParse(txtTotalPayCTM.Text, out result))
                     {
-                        MessageBox.Show(err.ToString());
+                        // Parsing successful, use the 'result' variable which contains the parsed integer value
+                        // No need for additional parsing or conversion
+                        blCTM.UpdateLoyalCustomers(txtIDCTM.Text, txtNameCTM.Text, result, txtPhoneCTM.Text, txtrNameRank.Text, ref err);
+                        LoadDataCustomer();
+                        if (err != null && Add == false)
+                        {
+                            MessageBox.Show(err.ToString());
+                        }
+                        else
+                        {
+                            MessageBox.Show("Add Successfully!");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Add Successfully!");
+                        // Parsing failed, handle the error or provide a default value
+                        // In this case, you may choose to display an error message to the user
+                        MessageBox.Show("Invalid Total Pay value. Please enter a valid integer.");
                     }
+                    
                 }
                 catch (SqlException)
                 {
@@ -205,5 +217,7 @@ namespace Convenience_Store_Entyti.DanhMuc
         {
             dgvCustomer.DataSource = dbCustomer.FindCustomersByName(txtFindCTM.Text);
         }
+
+       
     }
 }

@@ -86,6 +86,7 @@
     <Compile Include="BS_Layer\BLStock.cs" />
     <Compile Include="BS_Layer\BLSupplier.cs" />
     <Compile Include="BS_Layer\BLType.cs" />
+    <Compile Include="BS_Layer\ClassOrder.cs" />
     <Compile Include="BS_Layer\FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +95,11 @@
     </Compile>
     <Compile Include="check_account_login_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConvenienceStoreManagementDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConvenienceStoreManagementDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Employee.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -347,6 +353,10 @@
     <EmbeddedResource Include="BS_Layer\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report.rdlc" />
+    <EmbeddedResource Include="ReportManager.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControlGroup\FirstUserControlEmp.resx">
       <DependentUpon>FirstUserControlEmp.cs</DependentUpon>
     </EmbeddedResource>
@@ -426,6 +436,9 @@
     <EmbeddedResource Include="UserControlGroup\UserControlRanks.resx">
       <DependentUpon>UserControlRanks.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControlGroup\UserControlShift.resx">
+      <DependentUpon>UserControlShift.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControlGroup\UserControlStock.resx">
       <DependentUpon>UserControlStock.cs</DependentUpon>
     </EmbeddedResource>
@@ -439,10 +452,24 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="ConvenienceStoreManagementDataSet.xsc">
+      <DependentUpon>ConvenienceStoreManagementDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ConvenienceStoreManagementDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ConvenienceStoreManagementDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ConvenienceStoreManagementDataSet.xss">
+      <DependentUpon>ConvenienceStoreManagementDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Convenience_Store_Entyti.BS_Layer.BLEmployee.datasource" />
+    <None Include="Properties\DataSources\Convenience_Store_Entyti.BS_Layer.detail_order.datasource" />
+    <None Include="Properties\DataSources\Convenience_Store_Entyti.BS_Layer.Order.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -506,6 +533,9 @@
     <None Include="Resources\shutdown.png" />
     <None Include="Resources\tool-paintbrush_115145.png" />
     <None Include="Resources\draw_line_icon-icons.com_51076.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -130,23 +130,10 @@ namespace Convenience_Store_Entyti.DanhMuc
                 DateTime date = DateTime.Now;
                 string err = string.Empty;
                 bool result = dbInvoice.UpdateInvoice(invoiceID, txtIDEMP_order.Text, txtCTMPhone_order.Text, date, ref err);
-
                 if (result)
                 {
                     LoadDataDetail_order();
                     LoadDataMenu();
-                }
-                else
-                {
-                    MessageBox.Show("An error occurred: " + err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-                // Update invoice
-                result = dbInvoice.UpdateInvoice(invoiceID, txtIDEMP_order.Text, txtCTMPhone_order.Text, date,  ref err);
-
-                if (result)
-                {
-                    // Update successful
                 }
                 else
                 {
@@ -239,6 +226,13 @@ namespace Convenience_Store_Entyti.DanhMuc
 
             dbInvoice_Detail.DeleteInvoice_Detail(ref err, invoiceID, txtProduct_order.Text);
             LoadDataDetail_order();
+        }
+
+        private void btReport_Click(object sender, EventArgs e)
+        {   
+            
+            FormReport newreport = new FormReport();
+            newreport.ShowDialog();
         }
     }
 }

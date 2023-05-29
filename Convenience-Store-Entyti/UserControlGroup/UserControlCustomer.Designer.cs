@@ -127,12 +127,13 @@
             this.dgvCustomer.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCustomer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvCustomer.Location = new System.Drawing.Point(0, 519);
+            this.dgvCustomer.Location = new System.Drawing.Point(0, 358);
             this.dgvCustomer.Name = "dgvCustomer";
             this.dgvCustomer.RowHeadersWidth = 51;
             this.dgvCustomer.RowTemplate.Height = 24;
-            this.dgvCustomer.Size = new System.Drawing.Size(1745, 281);
+            this.dgvCustomer.Size = new System.Drawing.Size(1745, 442);
             this.dgvCustomer.TabIndex = 22;
+            this.dgvCustomer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomer_CellClick);
             // 
             // panel1
             // 

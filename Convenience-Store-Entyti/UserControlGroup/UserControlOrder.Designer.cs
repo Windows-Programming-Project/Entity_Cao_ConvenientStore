@@ -46,6 +46,7 @@
             this.btnFind_order = new System.Windows.Forms.Button();
             this.btnAddInvoice_order = new System.Windows.Forms.Button();
             this.btDeleteProductonOrder = new Convenience_Store_Entyti.RJControl.DesignButtonControl();
+            this.btReport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetail_order)).BeginInit();
             this.SuspendLayout();
@@ -77,7 +78,7 @@
             this.dgvDetail_order.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDetail_order.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvDetail_order.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDetail_order.Location = new System.Drawing.Point(833, 150);
+            this.dgvDetail_order.Location = new System.Drawing.Point(843, 150);
             this.dgvDetail_order.Name = "dgvDetail_order";
             this.dgvDetail_order.RowHeadersWidth = 51;
             this.dgvDetail_order.RowTemplate.Height = 24;
@@ -247,11 +248,28 @@
             this.btDeleteProductonOrder.UseVisualStyleBackColor = false;
             this.btDeleteProductonOrder.Click += new System.EventHandler(this.btDeleteProductonOrder_Click);
             // 
+            // btReport
+            // 
+            this.btReport.FlatAppearance.BorderSize = 0;
+            this.btReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btReport.Font = new System.Drawing.Font("Dubai", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btReport.ForeColor = System.Drawing.Color.White;
+            this.btReport.Image = global::Convenience_Store_Entyti.Properties.Resources.order;
+            this.btReport.Location = new System.Drawing.Point(1015, 614);
+            this.btReport.Name = "btReport";
+            this.btReport.Size = new System.Drawing.Size(296, 44);
+            this.btReport.TabIndex = 6;
+            this.btReport.Text = "Report print Order";
+            this.btReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btReport.UseVisualStyleBackColor = true;
+            this.btReport.Click += new System.EventHandler(this.btReport_Click);
+            // 
             // UserControlOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(244)))));
+            this.Controls.Add(this.btReport);
             this.Controls.Add(this.btDeleteProductonOrder);
             this.Controls.Add(this.lbAmountP_order);
             this.Controls.Add(this.lbCustomerPhone_order);
@@ -300,5 +318,6 @@
         private System.Windows.Forms.Button btnAddProduct_order;
         private System.Windows.Forms.Button btnReloadMenu_order;
         private RJControl.DesignButtonControl btDeleteProductonOrder;
+        private System.Windows.Forms.Button btReport;
     }
 }

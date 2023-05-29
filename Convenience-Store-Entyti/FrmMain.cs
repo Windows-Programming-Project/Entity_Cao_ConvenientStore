@@ -198,5 +198,7 @@ namespace Convenience_Store_Entyti
             panelShowOnMainForm.Controls.Clear();
             panelShowOnMainForm.Controls.Add(userControl);
         }
+
+       
     }
 }
