@@ -227,11 +227,11 @@ namespace Convenience_Store_Entyti.DanhMuc
             dbInvoice_Detail.DeleteInvoice_Detail(ref err, invoiceID, txtProduct_order.Text);
             LoadDataDetail_order();
         }
-
+        FormReport newreport = new FormReport();
         private void btReport_Click(object sender, EventArgs e)
-        {   
-            
-            FormReport newreport = new FormReport();
+        {
+            FormReport.path = "Convenience_Store_Entyti.Report.ReportOrder.rdlc";
+            newreport.LoadOrderData();
             newreport.ShowDialog();
         }
     }

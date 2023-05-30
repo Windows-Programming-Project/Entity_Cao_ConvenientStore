@@ -353,10 +353,12 @@
     <EmbeddedResource Include="BS_Layer\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report.rdlc" />
-    <EmbeddedResource Include="ReportManager.rdlc">
+    <EmbeddedResource Include="Report\ReportEmpSalaryAnalysis.rdlc" />
+    <EmbeddedResource Include="Report\ReportEmpShift.rdlc" />
+    <EmbeddedResource Include="Report\ReportOrder.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportSalary.rdlc" />
     <EmbeddedResource Include="UserControlGroup\FirstUserControlEmp.resx">
       <DependentUpon>FirstUserControlEmp.cs</DependentUpon>
     </EmbeddedResource>

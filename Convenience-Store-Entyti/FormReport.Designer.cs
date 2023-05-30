@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.convenienceStoreManagementDataSet1 = new Convenience_Store_Entyti.ConvenienceStoreManagementDataSet();
             this.fNTotalSalaryBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -46,13 +45,10 @@
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "DataSetOrder";
-            reportDataSource1.Value = this.orderBindingSource;
-            reportDataSource2.Name = "DataSetDetail_Order";
-            reportDataSource2.Value = this.detailorderBindingSource;
+            reportDataSource1.Name = "DataSetEmpSalary";
+            reportDataSource1.Value = this.fNTotalSalaryBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Convenience_Store_Entyti.ReportManager.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Convenience_Store_Entyti.Report.ReportSalary.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
