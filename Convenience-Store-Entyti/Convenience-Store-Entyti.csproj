@@ -369,6 +369,7 @@
     <EmbeddedResource Include="Report\ReportOrder.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportProduct.rdlc" />
     <EmbeddedResource Include="Report\ReportSalary.rdlc" />
     <EmbeddedResource Include="UserControlGroup\FirstUserControlEmp.resx">
       <DependentUpon>FirstUserControlEmp.cs</DependentUpon>
@@ -492,8 +493,21 @@
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Convenience_Store_Entyti.BS_Layer.BLEmployee.datasource" />
+    <None Include="Properties\DataSources\Convenience_Store_Entyti.BS_Layer.BLEmployeeLate.datasource" />
+    <None Include="Properties\DataSources\Convenience_Store_Entyti.BS_Layer.BLEmployee_Shift.datasource" />
+    <None Include="Properties\DataSources\Convenience_Store_Entyti.BS_Layer.BLInvoice.datasource" />
+    <None Include="Properties\DataSources\Convenience_Store_Entyti.BS_Layer.BLInvoice_Detail.datasource" />
+    <None Include="Properties\DataSources\Convenience_Store_Entyti.BS_Layer.BLLoyalCustomers.datasource" />
+    <None Include="Properties\DataSources\Convenience_Store_Entyti.BS_Layer.BLManuafacturer.datasource" />
+    <None Include="Properties\DataSources\Convenience_Store_Entyti.BS_Layer.BLProduct.datasource" />
+    <None Include="Properties\DataSources\Convenience_Store_Entyti.BS_Layer.BLRank.datasource" />
+    <None Include="Properties\DataSources\Convenience_Store_Entyti.BS_Layer.BLStock.datasource" />
+    <None Include="Properties\DataSources\Convenience_Store_Entyti.BS_Layer.BLSupplier.datasource" />
+    <None Include="Properties\DataSources\Convenience_Store_Entyti.BS_Layer.BLType.datasource" />
     <None Include="Properties\DataSources\Convenience_Store_Entyti.BS_Layer.detail_order.datasource" />
+    <None Include="Properties\DataSources\Convenience_Store_Entyti.BS_Layer.FormLogin.datasource" />
     <None Include="Properties\DataSources\Convenience_Store_Entyti.BS_Layer.Order.datasource" />
+    <None Include="Properties\DataSources\Convenience_Store_Entyti.BS_Layer.ProductReport.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

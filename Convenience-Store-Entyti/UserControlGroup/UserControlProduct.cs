@@ -220,5 +220,29 @@ namespace Convenience_Store_Entyti.UserControlGroup
             }
         
         }
+        public void LoadDataReportProduct()
+        {
+            try
+            {
+                // push data
+                dgvPRODUCT.DataSource = dbTY.GetProductDetails();
+                // chang size table
+               dgvPRODUCT.AutoResizeColumns();
+                
+            }
+            catch
+            {
+                // MessageBox.Show("Dose not take Data. Eror!!!");
+            }
+        }
+        FormReport newreport = new FormReport();
+        private void btReportPorduct_Click(object sender, EventArgs e)
+        {
+            LoadDataReportProduct();
+            FormReport.path = "Convenience_Store_Entyti.Report.ReportProduct.rdlc";
+            newreport.LoadProductAnalysisData();
+            newreport.ShowDialog();
+
+        }
     }
 }

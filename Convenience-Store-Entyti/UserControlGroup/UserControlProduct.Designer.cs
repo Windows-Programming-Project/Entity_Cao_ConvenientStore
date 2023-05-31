@@ -47,6 +47,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnFix = new System.Windows.Forms.Button();
             this.btnReload = new System.Windows.Forms.Button();
+            this.btReportPorduct = new Convenience_Store_Entyti.RJControl.DesignButtonControl();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPRODUCT)).BeginInit();
             this.SuspendLayout();
@@ -267,10 +268,31 @@
             this.btnReload.UseVisualStyleBackColor = true;
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
+            // btReportPorduct
+            // 
+            this.btReportPorduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(218)))), ((int)(((byte)(93)))));
+            this.btReportPorduct.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(218)))), ((int)(((byte)(93)))));
+            this.btReportPorduct.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btReportPorduct.BorderRadius = 20;
+            this.btReportPorduct.BorderSize = 0;
+            this.btReportPorduct.FlatAppearance.BorderSize = 0;
+            this.btReportPorduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btReportPorduct.ForeColor = System.Drawing.Color.White;
+            this.btReportPorduct.Location = new System.Drawing.Point(989, 89);
+            this.btReportPorduct.Name = "btReportPorduct";
+            this.btReportPorduct.Size = new System.Drawing.Size(150, 40);
+            this.btReportPorduct.TabIndex = 94;
+            this.btReportPorduct.Text = "Report Product";
+            this.btReportPorduct.TextColor = System.Drawing.Color.White;
+            this.btReportPorduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btReportPorduct.UseVisualStyleBackColor = false;
+            this.btReportPorduct.Click += new System.EventHandler(this.btReportPorduct_Click);
+            // 
             // UserControlProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btReportPorduct);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.panel);
@@ -310,5 +332,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnFix;
         private System.Windows.Forms.Button btnReload;
+        private RJControl.DesignButtonControl btReportPorduct;
     }
 }

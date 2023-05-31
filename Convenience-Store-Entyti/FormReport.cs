@@ -11,6 +11,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Convenience_Store_Entyti
 {
@@ -58,6 +59,18 @@ namespace Convenience_Store_Entyti
                 
           
         }
+        public void LoadProductAnalysisData()
+        {
+
+           BLProduct bLProduct = new BLProduct();
+
+            DataTable dataProduct = bLProduct.GetProductDetails();
+            ReportDataSource datasourceProduct = new ReportDataSource("DataSetProductAnalysis", dataProduct);
+           // fNTotalSalaryBindingSource.DataSource = datasourceEmpPayroll_Sheet;
+            this.reportViewer1.LocalReport.DataSources.Add(datasourceProduct);
+
+
+        }
         public void LoadEmployeeShiftData()
         {   
             
@@ -104,6 +117,10 @@ namespace Convenience_Store_Entyti
             else if (path == "Convenience_Store_Entyti.Report.ReportEmpSalaryAnalysis.rdlc")
             {
                 LoadEmployeeSalaryAnalysisData();
+            }
+            else if (path == "Convenience_Store_Entyti.Report.ReportProduct.rdlc")
+            {
+                LoadProductAnalysisData();
             }
 
             this.reportViewer1.LocalReport.ReportEmbeddedResource = path;

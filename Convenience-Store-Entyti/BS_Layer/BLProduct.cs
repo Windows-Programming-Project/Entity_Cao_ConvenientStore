@@ -11,6 +11,37 @@ namespace Convenience_Store_Entyti.BS_Layer
 {
     class BLProduct
     {
+        public DataTable GetProductDetails()
+        {
+            using (var dbContext = new ConvenienceStoreManagementEntities1(UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password))
+            {
+                var query = from p in dbContext.Products
+                            join id in dbContext.Invoice_Detail on p.pID equals id.pID into invoiceDetails
+                            from id in invoiceDetails.DefaultIfEmpty()
+                            join s in dbContext.Stocks on p.batchID equals s.batchID into stockDetails
+                            from s in stockDetails.DefaultIfEmpty()
+                            group new { p, id, s } by new { p.pName } into g
+                            select new
+                            {
+                                ProductName = g.Key.pName,
+                                BoughtAmount = g.Sum(x => x.id != null ? x.id.dAmount : 0),
+                                ImportedAmount = g.Sum(x => x.s != null ? x.s.amountofProduct : 0)
+                            };
+
+                DataTable dt = new DataTable();
+                dt.Columns.Add("ProductName");
+                dt.Columns.Add("BoughtAmount", typeof(int));
+                dt.Columns.Add("ImportedAmount", typeof(int));
+
+                foreach (var row in query)
+                {
+                    dt.Rows.Add(row.ProductName, row.BoughtAmount, row.ImportedAmount);
+                }
+
+                return dt;
+            }
+        }
+
         public DataTable GetMostFavoriteProducts()
         {
             try

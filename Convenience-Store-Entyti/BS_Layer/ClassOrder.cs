@@ -24,4 +24,11 @@ namespace Convenience_Store_Entyti.BS_Layer
         public int Quantity { get; set; }
         public decimal Price { get; set; }
     }
+
+    public class ProductReport
+    {
+        public string ProductName { get; set; }
+        public int BoughtAmount { get; set; }
+        public int ImportedAmount { get; set; }
+    }
 }
