@@ -47,6 +47,11 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnFix = new System.Windows.Forms.Button();
             this.btnReload = new System.Windows.Forms.Button();
+            this.tbDateProduct = new System.Windows.Forms.TextBox();
+            this.lbDateProduct = new System.Windows.Forms.Label();
+            this.radioButtonMonth = new System.Windows.Forms.RadioButton();
+            this.radioButtonYear = new System.Windows.Forms.RadioButton();
+            this.radioButtonAll = new System.Windows.Forms.RadioButton();
             this.btReportPorduct = new Convenience_Store_Entyti.RJControl.DesignButtonControl();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPRODUCT)).BeginInit();
@@ -230,7 +235,8 @@
             this.dgvPRODUCT.RowHeadersWidth = 51;
             this.dgvPRODUCT.Size = new System.Drawing.Size(1514, 514);
             this.dgvPRODUCT.TabIndex = 85;
-            this.dgvPRODUCT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPRODUCT_CellContentClick);
+            this.dgvPRODUCT.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPRODUCT_CellClick);
+   //         this.dgvPRODUCT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPRODUCT_CellContentClick);
             // 
             // btnDelete
             // 
@@ -268,6 +274,58 @@
             this.btnReload.UseVisualStyleBackColor = true;
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
+            // tbDateProduct
+            // 
+            this.tbDateProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDateProduct.Location = new System.Drawing.Point(1002, 28);
+            this.tbDateProduct.Margin = new System.Windows.Forms.Padding(4);
+            this.tbDateProduct.Multiline = true;
+            this.tbDateProduct.Name = "tbDateProduct";
+            this.tbDateProduct.Size = new System.Drawing.Size(149, 42);
+            this.tbDateProduct.TabIndex = 2;
+            // 
+            // lbDateProduct
+            // 
+            this.lbDateProduct.AutoSize = true;
+            this.lbDateProduct.Location = new System.Drawing.Point(1017, 51);
+            this.lbDateProduct.Name = "lbDateProduct";
+            this.lbDateProduct.Size = new System.Drawing.Size(36, 16);
+            this.lbDateProduct.TabIndex = 95;
+            this.lbDateProduct.Text = "Date";
+            // 
+            // radioButtonMonth
+            // 
+            this.radioButtonMonth.AutoSize = true;
+            this.radioButtonMonth.Location = new System.Drawing.Point(1197, 28);
+            this.radioButtonMonth.Name = "radioButtonMonth";
+            this.radioButtonMonth.Size = new System.Drawing.Size(64, 20);
+            this.radioButtonMonth.TabIndex = 96;
+            this.radioButtonMonth.TabStop = true;
+            this.radioButtonMonth.Text = "Month";
+            this.radioButtonMonth.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonYear
+            // 
+            this.radioButtonYear.AutoSize = true;
+            this.radioButtonYear.Location = new System.Drawing.Point(1197, 57);
+            this.radioButtonYear.Name = "radioButtonYear";
+            this.radioButtonYear.Size = new System.Drawing.Size(57, 20);
+            this.radioButtonYear.TabIndex = 97;
+            this.radioButtonYear.TabStop = true;
+            this.radioButtonYear.Text = "Year";
+            this.radioButtonYear.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAll
+            // 
+            this.radioButtonAll.AutoSize = true;
+            this.radioButtonAll.Location = new System.Drawing.Point(1197, 89);
+            this.radioButtonAll.Name = "radioButtonAll";
+            this.radioButtonAll.Size = new System.Drawing.Size(91, 20);
+            this.radioButtonAll.TabIndex = 97;
+            this.radioButtonAll.TabStop = true;
+            this.radioButtonAll.Text = "Real Time";
+            this.radioButtonAll.UseVisualStyleBackColor = true;
+            // 
             // btReportPorduct
             // 
             this.btReportPorduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(218)))), ((int)(((byte)(93)))));
@@ -292,6 +350,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.radioButtonAll);
+            this.Controls.Add(this.radioButtonYear);
+            this.Controls.Add(this.radioButtonMonth);
+            this.Controls.Add(this.lbDateProduct);
             this.Controls.Add(this.btReportPorduct);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnAdd);
@@ -300,6 +362,7 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dgvPRODUCT);
             this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.tbDateProduct);
             this.Controls.Add(this.btnFix);
             this.Controls.Add(this.btnReload);
             this.Name = "UserControlProduct";
@@ -308,6 +371,7 @@
             this.panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPRODUCT)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -333,5 +397,10 @@
         private System.Windows.Forms.Button btnFix;
         private System.Windows.Forms.Button btnReload;
         private RJControl.DesignButtonControl btReportPorduct;
+        private System.Windows.Forms.TextBox tbDateProduct;
+        private System.Windows.Forms.Label lbDateProduct;
+        private System.Windows.Forms.RadioButton radioButtonMonth;
+        private System.Windows.Forms.RadioButton radioButtonYear;
+        private System.Windows.Forms.RadioButton radioButtonAll;
     }
 }

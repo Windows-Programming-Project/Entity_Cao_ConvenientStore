@@ -17,7 +17,7 @@ namespace Convenience_Store_Entyti
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-             Application.Run(new FrmMain());
+           //  Application.Run(new FrmMain());
             //Application.Run(new FrmManuafacture());
             //Application.Run(new FrmStock());
             //Application.Run(new FrmManuafacture());
@@ -26,7 +26,7 @@ namespace Convenience_Store_Entyti
             //Application.Run(new FrmCustomer());
             // Application.Run(new FrmAccount());
             //Application.Run(new FormReport());
-           // Application.Run(new FormLogin());
+            Application.Run(new FormLogin());
 
         }
     }

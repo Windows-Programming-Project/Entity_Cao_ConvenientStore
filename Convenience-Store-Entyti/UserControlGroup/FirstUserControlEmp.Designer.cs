@@ -144,7 +144,7 @@
             this.dgvEMPLOYEE.RowTemplate.Height = 24;
             this.dgvEMPLOYEE.Size = new System.Drawing.Size(1720, 628);
             this.dgvEMPLOYEE.TabIndex = 41;
-            this.dgvEMPLOYEE.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEMPLOYEE_CellContentClick);
+            this.dgvEMPLOYEE.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEMPLOYEE_CellClick);
             // 
             // btnDeleteEMP
             // 

@@ -36,7 +36,7 @@ namespace Convenience_Store_Entyti.DanhMuc
                 // chang size table
                 dgvEMPLOYEE.AutoResizeColumns();
                 //
-                dgvEMPLOYEE_CellContentClick(null, null);
+                dgvEMPLOYEE_CellClick(null, null);
                 Add = true;
             }
             catch
@@ -44,12 +44,7 @@ namespace Convenience_Store_Entyti.DanhMuc
                // MessageBox.Show("Dose not take Data. Eror!!!");
             }
         }
-       
-        private void dgvEmpShift_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-        private void dgvEMPLOYEE_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvEMPLOYEE_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int r = dgvEMPLOYEE.CurrentCell.RowIndex;
             txtIDEmp.Text = dgvEMPLOYEE.Rows[r].Cells[0].Value.ToString();
@@ -271,5 +266,7 @@ namespace Convenience_Store_Entyti.DanhMuc
             
           
         }
+
+        
     }
 }

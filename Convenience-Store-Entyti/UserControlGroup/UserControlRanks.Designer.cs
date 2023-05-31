@@ -52,7 +52,7 @@
             this.dgvRank.RowTemplate.Height = 24;
             this.dgvRank.Size = new System.Drawing.Size(706, 582);
             this.dgvRank.TabIndex = 0;
-            this.dgvRank.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRank_CellContentClick);
+            this.dgvRank.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRank_CellClick);
             // 
             // tbRankName
             // 

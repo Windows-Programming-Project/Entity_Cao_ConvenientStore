@@ -11,6 +11,74 @@ namespace Convenience_Store_Entyti.BS_Layer
 {
     class BLProduct
     {
+        public DataTable GetProductDetailsYear(DateTime year)
+        {
+            using (var dbContext = new ConvenienceStoreManagementEntities1(UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password))
+            {
+                var query = from p in dbContext.Products
+                            join id in dbContext.Invoice_Detail on p.pID equals id.pID into invoiceDetails
+                            from id in invoiceDetails.DefaultIfEmpty()
+                            join i in dbContext.Invoices on id.iID equals i.iID into invoices
+                            from i in invoices.DefaultIfEmpty()
+                            join s in dbContext.Stocks on p.batchID equals s.batchID into stockDetails
+                            from s in stockDetails.DefaultIfEmpty()
+                            where i.iDate.HasValue && i.iDate.Value.Year == year.Year
+                            group new { p, id, i, s } by new { p.pName } into g
+                            select new
+                            {
+                                ProductName = g.Key.pName,
+                                BoughtAmount = g.Sum(x => x.id != null ? x.id.dAmount : 0),
+                                ImportedAmount = g.Sum(x => x.s != null ? x.s.amountofProduct : 0)
+                            };
+
+                DataTable dt = new DataTable();
+                dt.Columns.Add("ProductName");
+                dt.Columns.Add("BoughtAmount", typeof(int));
+                dt.Columns.Add("ImportedAmount", typeof(int));
+
+                foreach (var row in query)
+                {
+                    dt.Rows.Add(row.ProductName, row.BoughtAmount, row.ImportedAmount);
+                }
+
+                return dt;
+            }
+        }
+
+        public DataTable GetProductDetailsMonth(DateTime month)
+        {
+            using (var dbContext = new ConvenienceStoreManagementEntities1(UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password))
+            {
+                var query = from p in dbContext.Products
+                            join id in dbContext.Invoice_Detail on p.pID equals id.pID into invoiceDetails
+                            from id in invoiceDetails.DefaultIfEmpty()
+                            join i in dbContext.Invoices on id.iID equals i.iID into invoices
+                            from i in invoices.DefaultIfEmpty()
+                            join s in dbContext.Stocks on p.batchID equals s.batchID into stockDetails
+                            from s in stockDetails.DefaultIfEmpty()
+                            where i.iDate.HasValue && i.iDate.Value.Month == month.Month && i.iDate.Value.Year == month.Year
+                            group new { p, id, i, s } by new { p.pName } into g
+                            select new
+                            {
+                                ProductName = g.Key.pName,
+                                BoughtAmount = g.Sum(x => x.id != null ? x.id.dAmount : 0),
+                                ImportedAmount = g.Sum(x => x.s != null ? x.s.amountofProduct : 0)
+                            };
+
+                DataTable dt = new DataTable();
+                dt.Columns.Add("ProductName");
+                dt.Columns.Add("BoughtAmount", typeof(int));
+                dt.Columns.Add("ImportedAmount", typeof(int));
+
+                foreach (var row in query)
+                {
+                    dt.Rows.Add(row.ProductName, row.BoughtAmount, row.ImportedAmount);
+                }
+
+                return dt;
+            }
+        }
+
         public DataTable GetProductDetails()
         {
             using (var dbContext = new ConvenienceStoreManagementEntities1(UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password))

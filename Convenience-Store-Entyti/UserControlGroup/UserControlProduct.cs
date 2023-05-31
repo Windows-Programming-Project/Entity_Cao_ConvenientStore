@@ -46,7 +46,7 @@ namespace Convenience_Store_Entyti.UserControlGroup
                 this.btnDelete.Enabled = true;
 
                 //
-                dgvPRODUCT_CellContentClick(null, null);
+                dgvPRODUCT_CellClick(null, null);
             }
             catch
             {
@@ -62,10 +62,12 @@ namespace Convenience_Store_Entyti.UserControlGroup
             MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         }
 
-        private void dgvPRODUCT_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvPRODUCT_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
+        
             // Thứ tự dòng hiện hành
-            int r = dgvPRODUCT.CurrentCell.RowIndex;
+             int r = dgvPRODUCT.CurrentCell.RowIndex;
             // Chuyển thông tin lên panel
             this.txtIDP.Text = dgvPRODUCT.Rows[r].Cells[0].Value.ToString();
             this.txtpName.Text = dgvPRODUCT.Rows[r].Cells[1].Value.ToString();
@@ -110,7 +112,7 @@ namespace Convenience_Store_Entyti.UserControlGroup
             Them = false;
             // Cho phép thao tác trên Panel
             this.panel.Enabled = true;
-            dgvPRODUCT_CellContentClick(null, null);
+            dgvPRODUCT_CellClick(null, null);
             // Cho thao tác trên các nút Lưu / Hủy / Panel
             this.btnSave.Enabled = true;
             this.btnCancel.Enabled = true;
@@ -179,7 +181,7 @@ namespace Convenience_Store_Entyti.UserControlGroup
             this.btnSave.Enabled = false;
             this.btnCancel.Enabled = false;
             this.panel.Enabled = false;
-            dgvPRODUCT_CellContentClick(null, null);
+            dgvPRODUCT_CellClick(null, null);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -224,8 +226,19 @@ namespace Convenience_Store_Entyti.UserControlGroup
         {
             try
             {
-                // push data
-                dgvPRODUCT.DataSource = dbTY.GetProductDetails();
+                if (radioButtonAll.Checked)
+                {
+                    dgvPRODUCT.DataSource = dbTY.GetProductDetails(); 
+                }
+                else if (radioButtonMonth.Checked)
+                {
+                    dgvPRODUCT.DataSource = dbTY.GetProductDetailsMonth(DateTime.Parse(tbDateProduct.Text));
+                }
+                else if (radioButtonYear.Checked)
+                {
+                    dgvPRODUCT.DataSource = dbTY.GetProductDetailsYear(DateTime.Parse(tbDateProduct.Text));
+                }
+               
                 // chang size table
                dgvPRODUCT.AutoResizeColumns();
                 
@@ -235,14 +248,39 @@ namespace Convenience_Store_Entyti.UserControlGroup
                 // MessageBox.Show("Dose not take Data. Eror!!!");
             }
         }
+        public static DateTime date;
+        public static string Time = "";
         FormReport newreport = new FormReport();
         private void btReportPorduct_Click(object sender, EventArgs e)
         {
-            LoadDataReportProduct();
-            FormReport.path = "Convenience_Store_Entyti.Report.ReportProduct.rdlc";
-            newreport.LoadProductAnalysisData();
-            newreport.ShowDialog();
+            try
+            {
 
+                date = DateTime.Parse(tbDateProduct.Text);
+                LoadDataReportProduct();
+                FormReport.path = "Convenience_Store_Entyti.Report.ReportProduct.rdlc";
+                if (radioButtonAll.Checked)
+                {
+                    Time = "All";
+                }
+                else if (radioButtonMonth.Checked)
+                {
+                    Time = "Month";
+                }
+                else if (radioButtonYear.Checked)
+                {
+                    Time = "Year";
+                }
+                newreport.LoadProductAnalysisData();
+                newreport.ShowDialog();
+            }
+            catch
+            {
+
+            }
+             
         }
+
+        
     }
 }

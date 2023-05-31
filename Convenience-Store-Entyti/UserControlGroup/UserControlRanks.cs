@@ -31,7 +31,7 @@ namespace Convenience_Store_Entyti.UserControlGroup
                 // chang size table
                 dgvRank.AutoResizeColumns();
                 //
-                dgvRank_CellContentClick(null, null);
+                dgvRank_CellClick(null, null);
                 Add = true;
             }
             catch
@@ -39,7 +39,7 @@ namespace Convenience_Store_Entyti.UserControlGroup
               //  MessageBox.Show("Dose not take Data. Eror!!!");
             }
         }
-        private void dgvRank_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvRank_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int r = dgvRank.CurrentCell.RowIndex;
             tbRankName.Text = dgvRank.Rows[r].Cells[0].Value.ToString();
@@ -132,5 +132,7 @@ namespace Convenience_Store_Entyti.UserControlGroup
         {
             LoadData();
         }
+
+       
     }
 }

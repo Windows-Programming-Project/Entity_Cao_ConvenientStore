@@ -63,11 +63,32 @@ namespace Convenience_Store_Entyti
         {
 
            BLProduct bLProduct = new BLProduct();
+            this.reportViewer1.LocalReport.DataSources.Clear();
 
-            DataTable dataProduct = bLProduct.GetProductDetails();
-            ReportDataSource datasourceProduct = new ReportDataSource("DataSetProductAnalysis", dataProduct);
-           // fNTotalSalaryBindingSource.DataSource = datasourceEmpPayroll_Sheet;
-            this.reportViewer1.LocalReport.DataSources.Add(datasourceProduct);
+            DateTime Datemonth = UserControlProduct.date;
+            if (UserControlProduct.Time == "All")
+            {
+                DataTable dataProduct = bLProduct.GetProductDetails();
+                ReportDataSource datasourceProduct = new ReportDataSource("DataSetProductAnalysis", dataProduct);
+                // fNTotalSalaryBindingSource.DataSource = datasourceEmpPayroll_Sheet;
+                this.reportViewer1.LocalReport.DataSources.Add(datasourceProduct);
+            }
+            else if (UserControlProduct.Time == "Year")
+            {
+                DataTable dataProduct = bLProduct.GetProductDetailsYear(Datemonth);
+                ReportDataSource datasourceProduct = new ReportDataSource("DataSetProductAnalysis", dataProduct);
+                // fNTotalSalaryBindingSource.DataSource = datasourceEmpPayroll_Sheet;
+                this.reportViewer1.LocalReport.DataSources.Add(datasourceProduct);
+            }
+            else if (UserControlProduct.Time == "Month")
+            {
+                DataTable dataProduct = bLProduct.GetProductDetailsMonth(Datemonth);
+                ReportDataSource datasourceProduct = new ReportDataSource("DataSetProductAnalysis", dataProduct);
+                // fNTotalSalaryBindingSource.DataSource = datasourceEmpPayroll_Sheet;
+                this.reportViewer1.LocalReport.DataSources.Add(datasourceProduct);
+            }
+            this.reportViewer1.RefreshReport();
+
 
 
         }
