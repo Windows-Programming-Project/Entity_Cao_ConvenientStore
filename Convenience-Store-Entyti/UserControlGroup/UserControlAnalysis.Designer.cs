@@ -34,8 +34,9 @@
             this.btnSearchCTMbuy = new System.Windows.Forms.Button();
             this.dgvShowAnalysis = new System.Windows.Forms.DataGridView();
             this.pnTopAnalysis = new System.Windows.Forms.Panel();
-            this.tbGetInforAna = new System.Windows.Forms.TextBox();
             this.btProductsaleLest = new System.Windows.Forms.Button();
+            this.tbGetInforAna = new System.Windows.Forms.TextBox();
+            this.btReportEmpSalary = new Convenience_Store_Entyti.RJControl.DesignButtonControl();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowAnalysis)).BeginInit();
             this.pnTopAnalysis.SuspendLayout();
             this.SuspendLayout();
@@ -120,6 +121,7 @@
             // pnTopAnalysis
             // 
             this.pnTopAnalysis.BackColor = System.Drawing.Color.IndianRed;
+            this.pnTopAnalysis.Controls.Add(this.btReportEmpSalary);
             this.pnTopAnalysis.Controls.Add(this.btEmployee_Diligent);
             this.pnTopAnalysis.Controls.Add(this.btProductsaleLest);
             this.pnTopAnalysis.Controls.Add(this.btnEMPhightIncome);
@@ -131,14 +133,6 @@
             this.pnTopAnalysis.Name = "pnTopAnalysis";
             this.pnTopAnalysis.Size = new System.Drawing.Size(1425, 146);
             this.pnTopAnalysis.TabIndex = 3;
-            // 
-            // tbGetInforAna
-            // 
-            this.tbGetInforAna.Location = new System.Drawing.Point(1226, 21);
-            this.tbGetInforAna.Multiline = true;
-            this.tbGetInforAna.Name = "tbGetInforAna";
-            this.tbGetInforAna.Size = new System.Drawing.Size(181, 45);
-            this.tbGetInforAna.TabIndex = 0;
             // 
             // btProductsaleLest
             // 
@@ -155,6 +149,34 @@
             this.btProductsaleLest.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btProductsaleLest.UseVisualStyleBackColor = true;
             this.btProductsaleLest.Click += new System.EventHandler(this.btProductsaleLest_Click);
+            // 
+            // tbGetInforAna
+            // 
+            this.tbGetInforAna.Location = new System.Drawing.Point(1226, 21);
+            this.tbGetInforAna.Multiline = true;
+            this.tbGetInforAna.Name = "tbGetInforAna";
+            this.tbGetInforAna.Size = new System.Drawing.Size(181, 45);
+            this.tbGetInforAna.TabIndex = 0;
+            // 
+            // btReportEmpSalary
+            // 
+            this.btReportEmpSalary.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(218)))), ((int)(((byte)(93)))));
+            this.btReportEmpSalary.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(218)))), ((int)(((byte)(93)))));
+            this.btReportEmpSalary.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btReportEmpSalary.BorderRadius = 20;
+            this.btReportEmpSalary.BorderSize = 0;
+            this.btReportEmpSalary.FlatAppearance.BorderSize = 0;
+            this.btReportEmpSalary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btReportEmpSalary.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.btReportEmpSalary.Location = new System.Drawing.Point(863, 22);
+            this.btReportEmpSalary.Name = "btReportEmpSalary";
+            this.btReportEmpSalary.Size = new System.Drawing.Size(150, 40);
+            this.btReportEmpSalary.TabIndex = 2;
+            this.btReportEmpSalary.Text = "Report Employee Salary";
+            this.btReportEmpSalary.TextColor = System.Drawing.Color.DeepSkyBlue;
+            this.btReportEmpSalary.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btReportEmpSalary.UseVisualStyleBackColor = false;
+            this.btReportEmpSalary.Click += new System.EventHandler(this.btReportEmpSalary_Click);
             // 
             // UserControlAnalysis
             // 
@@ -182,5 +204,6 @@
         private System.Windows.Forms.Panel pnTopAnalysis;
         private System.Windows.Forms.TextBox tbGetInforAna;
         private System.Windows.Forms.Button btProductsaleLest;
+        private RJControl.DesignButtonControl btReportEmpSalary;
     }
 }

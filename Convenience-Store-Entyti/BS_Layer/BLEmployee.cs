@@ -122,6 +122,29 @@ namespace Convenience_Store_Entyti.BS_Layer
                 return null;
             }
         }
+        public DataTable GetEmployeePayrollAnalysis(DateTime month)
+        {
+            using (var dbContext = new ConvenienceStoreManagementEntities1(UserControlAcountLogin.UserLogin, UserControlAcountLogin.Password))
+            { 
+                var query = from ep in dbContext.FN_SumSalaryByPosition(month)
+                            select new
+                            {
+                                ep.Position,
+                                ep.TotalSalary
+                            };
+
+                DataTable dt = new DataTable();
+                dt.Columns.Add("Position");
+                dt.Columns.Add("TotalSalary", typeof(decimal));
+
+                foreach (var row in query)
+                {
+                    dt.Rows.Add(row.Position, row.TotalSalary);
+                }
+
+                return dt;
+            }
+        }
 
         public DataTable GetEmployeePayroll(DateTime month)
         {

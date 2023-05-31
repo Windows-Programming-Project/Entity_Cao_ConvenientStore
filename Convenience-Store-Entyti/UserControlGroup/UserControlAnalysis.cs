@@ -142,5 +142,13 @@ namespace Convenience_Store_Entyti.UserControlGroup
         {
             LoadDataProductL();
         }
+        FormReport newreport = new FormReport();
+        private void btReportEmpSalary_Click(object sender, EventArgs e)
+        {
+                FormReport.path = "Convenience_Store_Entyti.Report.ReportEmpSalaryAnalysis.rdlc";
+                newreport.LoadEmployeeSalaryAnalysisData();
+                newreport.ShowDialog();
+            
+        }
     }
 }

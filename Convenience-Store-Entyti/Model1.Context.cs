@@ -18,43 +18,34 @@ namespace Convenience_Store_Entyti
     using System.Data.SqlClient;
     using System.Data.Entity.Core.EntityClient;
 
-    //<add name = "ConvenienceStoreEntities" connectionString="metadata=res://*/CStore.csdl|res://*/CStore.ssdl|res://*/CStore.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(local);initial catalog=ConvenienceStore;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
-    //<add name = "ConvenienceStoreEntitiesNew" connectionString="metadata=res://*/CStore.csdl|res://*/CStore.ssdl|res://*/CStore.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(local);initial catalog=ConvenienceStore;integrated security=True;multiple active result sets=True;application name=EntityFramework;MultipleActiveResultSets=True&quot;" providerName="System.Data.EntityClient" />
-    //<add name = "ConvenienceStoreEntity" connectionString="metadata=res://*/CStoreNew.csdl|res://*/CStoreNew.ssdl|res://*/CStoreNew.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(local);initial catalog=ConvenienceStore;integrated security=True;multiple active result sets=True;application name=EntityFramework;MultipleActiveResultSets=True&quot;" providerName="System.Data.EntityClient" />
-    //<add name = "ConvenienceStoreEntityNew" connectionString="metadata=res://*/csdl|res://*/ssdl|res://*/msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(local);initial catalog=ConvenienceStore;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
-    //<add name = "ConvenienceStoreManagementEntities" connectionString="metadata=res://*/ConvenienceStoreManagement.csdl|res://*/ConvenienceStoreManagement.ssdl|res://*/ConvenienceStoreManagement.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=CAO;initial catalog=ConvenienceStoreManagement;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
-    //<add name = "ConvenienceStoreManagementEntities1" connectionString="metadata=res://*/ConvenientStoreManagement.csdl|res://*/ConvenientStoreManagement.ssdl|res://*/ConvenientStoreManagement.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=CAO;initial catalog=ConvenienceStoreManagement;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
-    // <connectionStrings>
-    //<add name = "ConvenienceStoreManagementEntitie" connectionString="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=CAO;initial catalog=ConvenienceStoreManagement;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
-    //</connectionStrings>
     public partial class ConvenienceStoreManagementEntities1 : DbContext
     {
         public ConvenienceStoreManagementEntities1(string userId, string password)
       : base(BuildConnectionString(userId, password))
         {
         }
-        private static string BuildConnectionString( string userId, string password)
+        private static string BuildConnectionString(string userId, string password)
         {
-           
-                string dataSource = "CAO";
-                string initialCatalog = "ConvenienceStoreManagement";
-               
 
-                SqlConnectionStringBuilder sqlBuilder = new SqlConnectionStringBuilder();
-                sqlBuilder.DataSource = dataSource;
-                sqlBuilder.InitialCatalog = initialCatalog;
-                sqlBuilder.UserID =userId;
-                sqlBuilder.Password = password;
-                sqlBuilder.MultipleActiveResultSets = true;
-                sqlBuilder.ApplicationName = "EntityFramework";
+            string dataSource = "CAO";
+            string initialCatalog = "ConvenienceStoreManagement";
 
-                EntityConnectionStringBuilder entityBuilder = new EntityConnectionStringBuilder();
-                entityBuilder.Metadata = "res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl";
-                entityBuilder.Provider = "System.Data.SqlClient";
-                entityBuilder.ProviderConnectionString = sqlBuilder.ToString();
 
-                return entityBuilder.ToString();
-            
+            SqlConnectionStringBuilder sqlBuilder = new SqlConnectionStringBuilder();
+            sqlBuilder.DataSource = dataSource;
+            sqlBuilder.InitialCatalog = initialCatalog;
+            sqlBuilder.UserID = userId;
+            sqlBuilder.Password = password;
+            sqlBuilder.MultipleActiveResultSets = true;
+            sqlBuilder.ApplicationName = "EntityFramework";
+
+            EntityConnectionStringBuilder entityBuilder = new EntityConnectionStringBuilder();
+            entityBuilder.Metadata = "res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl";
+            entityBuilder.Provider = "System.Data.SqlClient";
+            entityBuilder.ProviderConnectionString = sqlBuilder.ToString();
+
+            return entityBuilder.ToString();
+
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -68,7 +59,7 @@ namespace Convenience_Store_Entyti
              m.MapRightKey("shID"); // Specify the foreign key column for Shift
          });
         }
-        public virtual DbSet<EmployeeShift> EmployeeShifts { get; set; }
+
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Invoice> Invoices { get; set; }
         public virtual DbSet<Invoice_Detail> Invoice_Detail { get; set; }
@@ -86,169 +77,179 @@ namespace Convenience_Store_Entyti
         public virtual DbSet<LoyalCustomerLeastProduct> LoyalCustomerLeastProducts { get; set; }
         public virtual DbSet<LoyalCustomerMostProduct> LoyalCustomerMostProducts { get; set; }
         public virtual DbSet<MostFavoriteProduct> MostFavoriteProducts { get; set; }
-
+    
         [DbFunction("ConvenienceStoreManagementEntitie", "check_account_login")]
         public virtual IQueryable<check_account_login_Result> check_account_login(string username, string password, string role)
         {
             var usernameParameter = username != null ?
                 new ObjectParameter("username", username) :
                 new ObjectParameter("username", typeof(string));
-
+    
             var passwordParameter = password != null ?
                 new ObjectParameter("password", password) :
                 new ObjectParameter("password", typeof(string));
-
+    
             var roleParameter = role != null ?
                 new ObjectParameter("role", role) :
                 new ObjectParameter("role", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<check_account_login_Result>("[ConvenienceStoreManagementEntitie].[check_account_login](@username, @password, @role)", usernameParameter, passwordParameter, roleParameter);
         }
-
+    
         [DbFunction("ConvenienceStoreManagementEntitie", "FN_AvailableProducts")]
         public virtual IQueryable<FN_AvailableProducts_Result> FN_AvailableProducts()
         {
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<FN_AvailableProducts_Result>("[ConvenienceStoreManagementEntitie].[FN_AvailableProducts]()");
         }
-
+    
         [DbFunction("ConvenienceStoreManagementEntitie", "FN_TotalSalary")]
         public virtual IQueryable<FN_TotalSalary_Result> FN_TotalSalary(Nullable<System.DateTime> month)
         {
             var monthParameter = month.HasValue ?
                 new ObjectParameter("month", month) :
                 new ObjectParameter("month", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<FN_TotalSalary_Result>("[ConvenienceStoreManagementEntitie].[FN_TotalSalary](@month)", monthParameter);
         }
-
+    
         public virtual ObjectResult<FindProductByTypeName_Result> FindProductByTypeName(string typeName)
         {
             var typeNameParameter = typeName != null ?
                 new ObjectParameter("TypeName", typeName) :
                 new ObjectParameter("TypeName", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FindProductByTypeName_Result>("FindProductByTypeName", typeNameParameter);
         }
-
+    
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
                 new ObjectParameter("diagramname", typeof(string));
-
+    
             var owner_idParameter = owner_id.HasValue ?
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
-
+    
             var versionParameter = version.HasValue ?
                 new ObjectParameter("version", version) :
                 new ObjectParameter("version", typeof(int));
-
+    
             var definitionParameter = definition != null ?
                 new ObjectParameter("definition", definition) :
                 new ObjectParameter("definition", typeof(byte[]));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
         }
-
+    
         public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
                 new ObjectParameter("diagramname", typeof(string));
-
+    
             var owner_idParameter = owner_id.HasValue ?
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
-
+    
             var versionParameter = version.HasValue ?
                 new ObjectParameter("version", version) :
                 new ObjectParameter("version", typeof(int));
-
+    
             var definitionParameter = definition != null ?
                 new ObjectParameter("definition", definition) :
                 new ObjectParameter("definition", typeof(byte[]));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
         }
-
+    
         public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
                 new ObjectParameter("diagramname", typeof(string));
-
+    
             var owner_idParameter = owner_id.HasValue ?
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
         }
-
+    
         public virtual int sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
                 new ObjectParameter("diagramname", typeof(string));
-
+    
             var owner_idParameter = owner_id.HasValue ?
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
         }
-
+    
         public virtual int sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
                 new ObjectParameter("diagramname", typeof(string));
-
+    
             var owner_idParameter = owner_id.HasValue ?
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
         }
-
+    
         public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
                 new ObjectParameter("diagramname", typeof(string));
-
+    
             var owner_idParameter = owner_id.HasValue ?
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
-
+    
             var new_diagramnameParameter = new_diagramname != null ?
                 new ObjectParameter("new_diagramname", new_diagramname) :
                 new ObjectParameter("new_diagramname", typeof(string));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
         }
-
+    
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
-
+    
         public virtual ObjectResult<spud_HighestIncome_Result> spud_HighestIncome(Nullable<System.DateTime> month)
         {
             var monthParameter = month.HasValue ?
                 new ObjectParameter("month", month) :
                 new ObjectParameter("month", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spud_HighestIncome_Result>("spud_HighestIncome", monthParameter);
         }
-
+    
         public virtual ObjectResult<spud_MostDiligentEmployee_Result> spud_MostDiligentEmployee(Nullable<System.DateTime> month)
         {
             var monthParameter = month.HasValue ?
                 new ObjectParameter("month", month) :
                 new ObjectParameter("month", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spud_MostDiligentEmployee_Result>("spud_MostDiligentEmployee", monthParameter);
+        }
+    
+        [DbFunction("ConvenienceStoreManagementEntitie", "FN_SumSalaryByPosition")]
+        public virtual IQueryable<FN_SumSalaryByPosition_Result> FN_SumSalaryByPosition(Nullable<System.DateTime> month)
+        {
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<FN_SumSalaryByPosition_Result>("[ConvenienceStoreManagementEntitie].[FN_SumSalaryByPosition](@month)", monthParameter);
         }
     }
 }

@@ -38,14 +38,4 @@ namespace Convenience_Store_Entyti
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Shift> Shifts { get; set; }
     }
-
-
-    public partial class EmployeeShift
-    {
-        public int eID { get; set; }
-        public int shID { get; set; }
-
-        public virtual Employee Employee { get; set; }
-        public virtual Shift Shift { get; set; }
-    }
 }

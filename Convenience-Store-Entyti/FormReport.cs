@@ -43,6 +43,21 @@ namespace Convenience_Store_Entyti
                 MessageBox.Show("Invalid month format. Please enter the month in yyyy-MM format.");
             }
         }
+        public void LoadEmployeeSalaryAnalysisData()
+        {
+
+            BLEmployee bLEmployee = new BLEmployee();
+            string monthText = UserControlEmployee_Shift.DateMonth;
+            DateTime month = DateTime.Now;
+
+            
+                DataTable dataEmpPayroll_Sheet = bLEmployee.GetEmployeePayrollAnalysis(month);
+                ReportDataSource datasourceEmpPayroll_Sheet = new ReportDataSource("DataSetEmpSalaryAnalysis", dataEmpPayroll_Sheet);
+                fNTotalSalaryBindingSource.DataSource = datasourceEmpPayroll_Sheet;
+                this.reportViewer1.LocalReport.DataSources.Add(datasourceEmpPayroll_Sheet);
+                
+          
+        }
         public void LoadEmployeeShiftData()
         {   
             
@@ -85,6 +100,10 @@ namespace Convenience_Store_Entyti
             else if (path == "Convenience_Store_Entyti.Report.ReportSalary.rdlc")
             {
                 LoadEmployeeSalaryData();
+            }
+            else if (path == "Convenience_Store_Entyti.Report.ReportEmpSalaryAnalysis.rdlc")
+            {
+                LoadEmployeeSalaryAnalysisData();
             }
 
             this.reportViewer1.LocalReport.ReportEmbeddedResource = path;

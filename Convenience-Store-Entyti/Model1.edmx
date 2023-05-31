@@ -25,8 +25,8 @@
             <PropertyRef Name="eID" />
             <PropertyRef Name="shID" />
           </Key>
-          <Property Name="eID" Nullable="false" MaxLength="20" Type="nvarchar" />
-          <Property Name="shID" Nullable="false" MaxLength="20" Type="nvarchar" />
+          <Property Name="eID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="shID" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'ConvenienceStoreManagement.dbo.EmployeeLate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -183,8 +183,8 @@ warning 6002: The table/view 'ConvenienceStoreManagement.dbo.MostFavoriteProduct
           <Property Name="TotalAmount" Type="int" />
         </EntityType>
         <Association Name="FK__Employee_S__shID__59063A47">
-          <End Type="Self.Shift" Multiplicity="1" Role="Shift" />
-          <End Type="Self.Employee_Shift" Multiplicity="*" Role="Employee_Shift" />
+          <End Role="Shift" Type="Self.Shift" Multiplicity="1" />
+          <End Role="Employee_Shift" Type="Self.Employee_Shift" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Shift">
               <PropertyRef Name="shID" />
@@ -195,8 +195,8 @@ warning 6002: The table/view 'ConvenienceStoreManagement.dbo.MostFavoriteProduct
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Employee_Sh__eID__5812160E">
-          <End Type="Self.Employee" Multiplicity="1" Role="Employee" />
-          <End Type="Self.Employee_Shift" Multiplicity="*" Role="Employee_Shift" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Employee_Shift" Type="Self.Employee_Shift" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Employee">
               <PropertyRef Name="eID" />
@@ -255,7 +255,9 @@ warning 6002: The table/view 'ConvenienceStoreManagement.dbo.MostFavoriteProduct
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Invoice_Det__iID__5070F446">
-          <End Role="Invoice" Type="Self.Invoice" Multiplicity="1" />
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Invoice_Detail" Type="Self.Invoice_Detail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Invoice">
@@ -267,7 +269,9 @@ warning 6002: The table/view 'ConvenienceStoreManagement.dbo.MostFavoriteProduct
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Invoice_Det__pID__5165187F">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Invoice_Detail" Type="Self.Invoice_Detail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
@@ -373,6 +377,17 @@ warning 6002: The table/view 'ConvenienceStoreManagement.dbo.MostFavoriteProduct
           </ReturnType>
         </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="FN_SumSalaryByPosition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="month" Type="date" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Position" Type="varchar" MaxLength="13" Nullable="false" />
+                <Property Name="TotalSalary" Type="float" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="FN_TotalSalary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="month" Type="date" Mode="In" />
           <ReturnType>
@@ -477,12 +492,12 @@ warning 6002: The table/view 'ConvenienceStoreManagement.dbo.MostFavoriteProduct
     FROM [dbo].[MostFavoriteProducts] AS [MostFavoriteProducts]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__Employee_S__shID__59063A47" Association="Self.FK__Employee_S__shID__59063A47">
-            <End EntitySet="Shift" Role="Shift" />
-            <End EntitySet="Employee_Shift" Role="Employee_Shift" />
+            <End Role="Shift" EntitySet="Shift" />
+            <End Role="Employee_Shift" EntitySet="Employee_Shift" />
           </AssociationSet>
           <AssociationSet Name="FK__Employee_Sh__eID__5812160E" Association="Self.FK__Employee_Sh__eID__5812160E">
-            <End EntitySet="Employee" Role="Employee" />
-            <End EntitySet="Employee_Shift" Role="Employee_Shift" />
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Employee_Shift" EntitySet="Employee_Shift" />
           </AssociationSet>
           <AssociationSet Name="FK__EmployeeLa__shID__6FE99F9F" Association="Self.FK__EmployeeLa__shID__6FE99F9F">
             <End Role="Shift" EntitySet="Shift" />
@@ -991,6 +1006,9 @@ warning 6002: The table/view 'ConvenienceStoreManagement.dbo.MostFavoriteProduct
           <FunctionImport Name="spud_MostDiligentEmployee" ReturnType="Collection(ConvenienceStoreManagementModel.spud_MostDiligentEmployee_Result)">
           <Parameter Name="month" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="FN_SumSalaryByPosition" IsComposable="true" ReturnType="Collection(ConvenienceStoreManagementModel.FN_SumSalaryByPosition_Result)">
+            <Parameter Name="month" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="FindProductByTypeName_Result">
           <Property Type="String" Name="pID" Nullable="false" MaxLength="20" />
@@ -1021,6 +1039,10 @@ warning 6002: The table/view 'ConvenienceStoreManagement.dbo.MostFavoriteProduct
           <Property Type="String" Name="ePosition" Nullable="true" MaxLength="40" />
           <Property Type="Double" Name="BasicSalaryPerHour" Nullable="true" />
           <Property Type="Double" Name="TotalworkHours" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="FN_SumSalaryByPosition_Result">
+          <Property Type="String" Name="Position" Nullable="false" MaxLength="13" />
+          <Property Type="Double" Name="TotalSalary" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1290,6 +1312,14 @@ warning 6002: The table/view 'ConvenienceStoreManagement.dbo.MostFavoriteProduct
                 <ScalarProperty Name="ePosition" ColumnName="ePosition" />
                 <ScalarProperty Name="BasicSalaryPerHour" ColumnName="BasicSalaryPerHour" />
                 <ScalarProperty Name="TotalworkHours" ColumnName="TotalworkHours" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="FN_SumSalaryByPosition" FunctionName="ConvenienceStoreManagementModel.Store.FN_SumSalaryByPosition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ConvenienceStoreManagementModel.FN_SumSalaryByPosition_Result">
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="TotalSalary" ColumnName="TotalSalary" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

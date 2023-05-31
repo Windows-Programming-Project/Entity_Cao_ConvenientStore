@@ -29,42 +29,38 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.convenienceStoreManagementDataSet1 = new Convenience_Store_Entyti.ConvenienceStoreManagementDataSet();
             this.fNTotalSalaryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.convenienceStoreManagementDataSet1 = new Convenience_Store_Entyti.ConvenienceStoreManagementDataSet();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.fN_TotalSalaryTableAdapter = new Convenience_Store_Entyti.ConvenienceStoreManagementDataSetTableAdapters.FN_TotalSalaryTableAdapter();
             this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.detailorderBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.convenienceStoreManagementDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fNTotalSalaryBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.convenienceStoreManagementDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailorderBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // reportViewer1
+            // fNTotalSalaryBindingSource
             // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "DataSetEmpSalary";
-            reportDataSource1.Value = this.fNTotalSalaryBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Convenience_Store_Entyti.Report.ReportSalary.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(1406, 554);
-            this.reportViewer1.TabIndex = 0;
-            this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
+            this.fNTotalSalaryBindingSource.DataMember = "FN_TotalSalary";
+            this.fNTotalSalaryBindingSource.DataSource = this.convenienceStoreManagementDataSet1;
             // 
             // convenienceStoreManagementDataSet1
             // 
             this.convenienceStoreManagementDataSet1.DataSetName = "ConvenienceStoreManagementDataSet";
             this.convenienceStoreManagementDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // fNTotalSalaryBindingSource
+            // reportViewer1
             // 
-            this.fNTotalSalaryBindingSource.DataMember = "FN_TotalSalary";
-            this.fNTotalSalaryBindingSource.DataSource = this.convenienceStoreManagementDataSet1;
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "Convenience_Store_Entyti.Report.ReportEmpSalaryAnalysis.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(1406, 554);
+            this.reportViewer1.TabIndex = 0;
+            this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
             // 
             // fN_TotalSalaryTableAdapter
             // 
@@ -88,8 +84,8 @@
             this.Name = "FormReport";
             this.Text = "FormReport";
             this.Load += new System.EventHandler(this.FormReport_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.convenienceStoreManagementDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fNTotalSalaryBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.convenienceStoreManagementDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.detailorderBindingSource)).EndInit();
             this.ResumeLayout(false);
