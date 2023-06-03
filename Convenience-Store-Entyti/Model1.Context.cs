@@ -21,8 +21,9 @@ namespace Convenience_Store_Entyti
     public partial class ConvenienceStoreManagementEntities1 : DbContext
     {
         public ConvenienceStoreManagementEntities1(string userId, string password)
-      : base(BuildConnectionString(userId, password))
+      : base(BuildConnectionString(userId, password) )
         {
+            //   "name=ConvenienceStoreManagementEntitie"
         }
         private static string BuildConnectionString(string userId, string password)
         {

@@ -19,6 +19,7 @@ namespace Convenience_Store_Entyti.DanhMuc
         BLEmployee dbEmployee = new BLEmployee();
         BLEmployee_Shift dbEmpShift = new BLEmployee_Shift();
         string err;
+        DateTime date = DateTime.Now;
         bool Add;
         #endregion
 
@@ -82,7 +83,8 @@ namespace Convenience_Store_Entyti.DanhMuc
                 try
                 {
                     BLEmployee blEMP = new BLEmployee();
-                    Add = blEMP.AddEmployee(txtIDEmp.Text, txtNameEMP.Text, DateTime.Parse(this.txtDateOfBirthEMP.Text), Convert.ToBoolean(txtGenderEMP.Text), txtPhoneEMP.Text, txtAddressEMP.Text, txtPositionEMP.Text, Int32.Parse(txtSalaryEMP.Text),txtUserNameEmp.Text,txtPasswordAccountEmp.Text, ref err);           // Load lại dữ liệu trên DataGridView 
+                   
+                    Add = blEMP.AddEmployee(txtIDEmp.Text, txtNameEMP.Text, date, Convert.ToBoolean(txtGenderEMP.Text), txtPhoneEMP.Text, txtAddressEMP.Text, txtPositionEMP.Text, Int32.Parse(txtSalaryEMP.Text),txtUserNameEmp.Text,txtPasswordAccountEmp.Text, ref err);           // Load lại dữ liệu trên DataGridView 
                   
                     // Thông báo 
                     if (err != null && Add == false)
@@ -104,7 +106,7 @@ namespace Convenience_Store_Entyti.DanhMuc
             {
                 // Thực hiện lệnh 
                 BLEmployee blEMP = new BLEmployee();
-                blEMP.AddEmployee(txtIDEmp.Text, txtNameEMP.Text, DateTime.Parse(this.txtDateOfBirthEMP.Text), Convert.ToBoolean(txtGenderEMP.Text), txtPhoneEMP.Text, txtAddressEMP.Text, txtPositionEMP.Text, Int32.Parse(txtSalaryEMP.Text), txtUserNameEmp.Text, txtPasswordAccountEmp.Text, ref err);           // Load lại dữ liệu trên DataGridView 
+                blEMP.AddEmployee(txtIDEmp.Text, txtNameEMP.Text, date, Convert.ToBoolean(txtGenderEMP.Text), txtPhoneEMP.Text, txtAddressEMP.Text, txtPositionEMP.Text, Int32.Parse(txtSalaryEMP.Text), txtUserNameEmp.Text, txtPasswordAccountEmp.Text, ref err);           // Load lại dữ liệu trên DataGridView 
                 if (err != null && Add == false)
                 {
                     MessageBox.Show(err.ToString());

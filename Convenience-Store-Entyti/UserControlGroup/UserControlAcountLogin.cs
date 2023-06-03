@@ -105,6 +105,11 @@ namespace Convenience_Store_Entyti.UserControlGroup
             }
 
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
 
     

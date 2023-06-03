@@ -12,6 +12,7 @@ namespace Convenience_Store_Entyti.BS_Layer
 {
     public partial class FormLogin : Form
     {
+        
         public FormLogin()
         {
             InitializeComponent();

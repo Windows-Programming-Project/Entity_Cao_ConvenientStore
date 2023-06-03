@@ -33,12 +33,11 @@
             // 
             // UserControlAcountLoginAcountLogin1
             // 
-            this.UserControlAcountLoginAcountLogin1.Location = new System.Drawing.Point(62, 48);
+            this.UserControlAcountLoginAcountLogin1.Location = new System.Drawing.Point(123, 59);
             this.UserControlAcountLoginAcountLogin1.Name = "UserControlAcountLoginAcountLogin1";
-           // this.UserControlAcountLoginAcountLogin1.Password = null;
-            this.UserControlAcountLoginAcountLogin1.Size = new System.Drawing.Size(1076, 534);
+            this.UserControlAcountLoginAcountLogin1.Size = new System.Drawing.Size(1165, 564);
             this.UserControlAcountLoginAcountLogin1.TabIndex = 0;
-           // this.UserControlAcountLoginAcountLogin1.UserLogin = null;
+            this.UserControlAcountLoginAcountLogin1.TabStop = false;
             // 
             // FormLogin
             // 
@@ -47,6 +46,7 @@
             this.ClientSize = new System.Drawing.Size(1392, 617);
             this.Controls.Add(this.UserControlAcountLoginAcountLogin1);
             this.Name = "FormLogin";
+            this.ShowInTaskbar = false;
             this.Text = "FormLogin";
             this.ResumeLayout(false);
 

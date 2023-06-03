@@ -42,23 +42,27 @@
             // 
             // btnLogin
             // 
+            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(172)))), ((int)(((byte)(214)))));
+            this.btnLogin.Font = new System.Drawing.Font("Bahnschrift Condensed", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.ForeColor = System.Drawing.Color.Transparent;
             this.btnLogin.Location = new System.Drawing.Point(633, 373);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(170, 65);
             this.btnLogin.TabIndex = 0;
             this.btnLogin.Text = "Login";
-            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Bauhaus 93", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(117)))), ((int)(((byte)(214)))));
             this.label1.Location = new System.Drawing.Point(359, 52);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(295, 54);
+            this.label1.Size = new System.Drawing.Size(315, 53);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Login Acount";
+            this.label1.Text = "Login Account";
             // 
             // tbUserLogin
             // 
@@ -72,6 +76,7 @@
             // lbPassLogin
             // 
             this.lbPassLogin.AutoSize = true;
+            this.lbPassLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(172)))), ((int)(((byte)(214)))));
             this.lbPassLogin.Location = new System.Drawing.Point(256, 255);
             this.lbPassLogin.Name = "lbPassLogin";
             this.lbPassLogin.Size = new System.Drawing.Size(70, 16);
@@ -90,6 +95,7 @@
             // lbUserLogin
             // 
             this.lbUserLogin.AutoSize = true;
+            this.lbUserLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(172)))), ((int)(((byte)(214)))));
             this.lbUserLogin.Location = new System.Drawing.Point(256, 158);
             this.lbUserLogin.Name = "lbUserLogin";
             this.lbUserLogin.Size = new System.Drawing.Size(73, 16);
@@ -98,16 +104,21 @@
             // 
             // btnExit
             // 
+            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(172)))), ((int)(((byte)(214)))));
+            this.btnExit.Font = new System.Drawing.Font("Bahnschrift Condensed", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.White;
             this.btnExit.Location = new System.Drawing.Point(823, 373);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(170, 65);
             this.btnExit.TabIndex = 0;
             this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // rdBEmployeeFull
             // 
             this.rdBEmployeeFull.AutoSize = true;
+            this.rdBEmployeeFull.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(172)))), ((int)(((byte)(214)))));
             this.rdBEmployeeFull.Location = new System.Drawing.Point(173, 347);
             this.rdBEmployeeFull.Name = "rdBEmployeeFull";
             this.rdBEmployeeFull.Size = new System.Drawing.Size(111, 20);
@@ -119,6 +130,7 @@
             // rdBEmpPart
             // 
             this.rdBEmpPart.AutoSize = true;
+            this.rdBEmpPart.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(172)))), ((int)(((byte)(214)))));
             this.rdBEmpPart.Location = new System.Drawing.Point(173, 373);
             this.rdBEmpPart.Name = "rdBEmpPart";
             this.rdBEmpPart.Size = new System.Drawing.Size(114, 20);
@@ -130,6 +142,7 @@
             // rdBManager
             // 
             this.rdBManager.AutoSize = true;
+            this.rdBManager.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(172)))), ((int)(((byte)(214)))));
             this.rdBManager.Location = new System.Drawing.Point(173, 399);
             this.rdBManager.Name = "rdBManager";
             this.rdBManager.Size = new System.Drawing.Size(82, 20);
